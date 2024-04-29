@@ -21,6 +21,21 @@ window.toggleProfileDropdown = function(){
     profileDropdown.classList.toggle("active");
 };
 
+//Add To Cart
+function addToCart() {
+  var formData = $('#addToCartForm').serialize();
+  $.ajax({
+    type: 'POST',
+    url: contextPath + '/AddToCartServlet',
+    data: formData,
+    success: function (response) {
+      $('#loadingIndicator').hide();
+      alert(response);
+    },
+  });
+  return false;
+}
+
 
 //Get Shipping Value
 window.getShipping = function(){
