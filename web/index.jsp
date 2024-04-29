@@ -20,6 +20,21 @@
         <%@include file="includes/shared/navbar.jsp" %>
         <%@include file="includes/shared/search.jsp" %>
         
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 mb-5">
+                    <a href="#" class="product-card">
+                        <div class="product-box">
+                            <img src="assets/images/products/plate01.png" class="product-img"/>
+                            <h3>Excellent food</h3>
+                            <p>Rs.100.00</p> 
+                            <button class="button" onclick="addToCart()">Add To Cart</button> 
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
         <script>
             var contextPath = "${pageContext.request.contextPath}";
         </script>
