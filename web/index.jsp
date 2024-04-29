@@ -20,6 +20,26 @@
         <%@include file="includes/shared/navbar.jsp" %>
         <%@include file="includes/shared/search.jsp" %>
         
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 mb-5">
+                    <a href="#" class="product-card">
+                        <div class="product-box">
+                            <img src="assets/images/products/plate01.png" class="product-img"/>
+                            <h3>Excellent food</h3>
+                            <p>Rs.100.00</p>
+                            <form id="addToCartForm" method="POST">
+                                <input type="hidden" name="pro_id" value="1" id="pro_id" />
+                                <input type="hidden" name="quantity" value="1" id="quantity" />
+                                <input type="hidden" name="sub_total" value="199.10" id="sub_total" />
+                                <button class="button" onclick="addToCart()">Add To Cart</button>
+                            </form>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
         <script>
             var contextPath = "${pageContext.request.contextPath}";
         </script>
