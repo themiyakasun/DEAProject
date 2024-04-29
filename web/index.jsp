@@ -17,7 +17,8 @@
         
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <%@include file="includes/shared/navbar.jsp" %>
+        <%@include file="includes/shared/search.jsp" %>
         
         <script>
             var contextPath = "${pageContext.request.contextPath}";
