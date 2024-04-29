@@ -49,6 +49,63 @@ window.getShipping = function(){
     $('.cart-sum-total .shipping').text('$' + selectedValue.toFixed(2));
 };
 
+//Quantity
+function minus(cartId) {
+  var quantityInput = document.getElementById('quantity_' + cartId);
+  if (quantityInput) {
+    var currentValue = parseInt(quantityInput.value);
+    if (currentValue === 1) {
+      document.getElementById('minus-btn_' + cartId).disabled = true;
+    }
+    if (!isNaN(currentValue) && currentValue > 0) {
+      quantityInput.value = currentValue - 1;
+      updateSubtotal(cartId);
+      updateCartTotal();
+    }
+  }
+}
+
+function add(cartId) {
+  var quantityInput = document.getElementById('quantity_' + cartId);
+  if (quantityInput) {
+    var currentValue = parseInt(quantityInput.value);
+    if (!isNaN(currentValue)) {
+      quantityInput.value = currentValue + 1;
+      updateSubtotal(cartId);
+      updateCartTotal();
+    }
+  }
+}
+
+function updateSubtotal(cartId) {
+  var quantity = parseInt(document.getElementById('quantity_' + cartId).value);
+  var price = parseFloat(
+    document
+      .querySelector('#cartItem_' + cartId + ' .price')
+      .innerText.replace('$', '')
+  );
+  var subtotal = quantity * price;
+  document.querySelector('#cartItem_' + cartId + ' .sub-total').textContent =
+    '$' + subtotal.toFixed(2);
+}
+
+function updateCartTotal() {
+  var sumSubtotal = 0;
+  $('.sub-total').each(function () {
+    var subtotal = parseFloat($(this).text().replace('$', ''));
+    sumSubtotal += subtotal;
+  });
+  var shippingCost = parseFloat(
+    $('.cart-sum-total .shipping').text().trim().substring(1)
+  );
+  $('.cart-sum-sub-total .price').text('$' + sumSubtotal.toFixed(2));
+  updateCartWithShippingTotal(sumSubtotal + shippingCost);
+}
+
+function updateCartWithShippingTotal(subTotal) {
+  $('.cart-sum-total .price').text('$' + subTotal.toFixed(2));
+}
+
 
  $(document).ready(function() {
     //Display Cart Items
@@ -62,14 +119,14 @@ window.getShipping = function(){
                 var sumSubtotal = 0; 
                 $.each(data, function(index, item) {
                     var minusButton = $('<button>').addClass('minus-btn').attr({id:'minus-btn_' + item.cartId, 'data-cart-id': item.cartId}).append(
-                        $('<img>').attr('src', 'assets/icons/Minus.png')
+                        $('<img>').attr('src', 'assets/images/icons/minus.png')
                     ).click(function() {
                         var cartId = $(this).attr('data-cart-id');
                         minus(cartId);
                     }).prop('disabled', false);
 
                     var addButton = $('<button>').addClass('add-btn').attr({id:'add-btn', 'data-cart-id': item.cartId}).append(
-                        $('<img>').attr('src', 'assets/icons/Add.png')
+                        $('<img>').attr('src', 'assets/images/icons/add.png')
                     ).click(function() {
                         var cartId = $(this).attr('data-cart-id');
                         add(cartId);
