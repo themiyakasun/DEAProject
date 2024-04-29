@@ -29,7 +29,6 @@
         <script>
             var contextPath = "${pageContext.request.contextPath}";
         </script>
-        <script src="js/index.js"></script>
-        <script src="js/cart.js"></script>
+        <script src="assets/js/index.js"></script>
         
     </body>
