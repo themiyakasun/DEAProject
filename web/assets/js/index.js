@@ -54,7 +54,7 @@ window.getShipping = function(){
     //Display Cart Items
     function fetchCartItemsAndUpdateTotal() {
         $.ajax({
-            url: 'CartServlet',
+            url: contextPath + '/CartServlet',
             type: 'GET',
             dataType: 'json',
             success: function(data) {
