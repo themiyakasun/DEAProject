@@ -194,6 +194,8 @@ function updateCartWithShippingTotal(subTotal) {
         });
     }
     
+    
+    //Display ContactInformation
     function fetchContactInformation() {
         $.ajax({
           url: 'ContactInformationServlet',
@@ -215,6 +217,7 @@ function updateCartWithShippingTotal(subTotal) {
         });
   }
   
+    //Display AddressInformation
     function fetchAddressInformation() {
         $.ajax({
           url: 'AddressInfoServlet',
@@ -237,9 +240,96 @@ function updateCartWithShippingTotal(subTotal) {
         });
     }
     
+    //Display OrderSummary
+    function fetchOrderSummary() {
+      $.ajax({
+      url: 'OrderSummaryServlet',
+      type: 'GET',
+      dataType: 'json',
+      success: function (data) {
+        var orderSummaryList = $('.order-summary-list');
+        var sumSubtotal = 0;
+        var shippingMethod = '';
+        var total = 0;
+
+        orderSummaryList.empty();
+
+        $.each(data, function (index, item) {
+          var product = $('<div>')
+            .addClass('list-item')
+            .append(
+              $('<div>')
+                .addClass('product')
+                .append(
+                  $('<img>')
+                    .addClass('pro-img')
+                    .attr('src', contextPath + '/uploads/' + item.productImg),
+                  $('<div>')
+                    .addClass('details')
+                    .append(
+                      $('<h3>').text(item.productName),
+                      $('<span>').text('Quantity: ' + item.quantity)
+                    )
+                ),
+              $('<div>')
+                .addClass('price')
+                .css('display', 'none')
+                .text('$' + item.productPrice.toFixed(2)),
+              $('<div>')
+                .addClass('sub-total')
+                .text('$' + (item.productPrice * item.quantity).toFixed(2)),
+              $('<input>').attr({
+                type: 'hidden',
+                class: 'order-id',
+                id: 'order-id',
+                value: item.orderId,
+              })
+            );
+
+          orderSummaryList.append(product);
+
+          sumSubtotal += item.productPrice * item.quantity;
+          total = item.total;
+
+          shippingMethod = item.shippingMethod;
+        });
+
+        // Add classes to shipping, subtotal, and total elements
+        orderSummaryList.append(
+          $('<div>')
+            .addClass('shipping')
+            .append(
+              $('<span>').addClass('text').text('Shipping'),
+              $('<span>').addClass('value').text(shippingMethod)
+            ),
+          $('<div>')
+            .addClass('shipping')
+            .append(
+              $('<span>').addClass('text').text('SubTotal'),
+              $('<span>')
+                .addClass('value')
+                .text('$' + sumSubtotal.toFixed(2))
+            ),
+          $('<div>')
+            .addClass('total-cost')
+            .append(
+              $('<span>').addClass('text').text('Total'),
+              $('<span>')
+                .addClass('value')
+                .text('$' + total.toFixed(2))
+            )
+        );
+      },
+      error: function () {
+        alert('Error fetching cart items.');
+      },
+    });
+    }
+    
     fetchCartItemsAndUpdateTotal();
     fetchContactInformation();
     fetchAddressInformation();
+    fetchOrderSummary();
  });
  
  
