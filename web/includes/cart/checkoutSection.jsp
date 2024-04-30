@@ -146,8 +146,9 @@
                 </div>
             </div>
         </div>
-        <div class="place-order-btn" onclick="sendCheckoutData()">
-            
+                    
+        <div class="place-order-btn">
+            <button class="button" onclick="sendCheckoutData()">Place Order</button>
         </div>
     </div>
 </div>

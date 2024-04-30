@@ -394,3 +394,48 @@ function sendData() {
     },
   });
 }
+
+//Send CheckOut Data
+function sendCheckoutData() {
+  var firstName = $('#fname').val();
+  var lastName = $('#lname').val();
+  var email = $('#email').val();
+  var phoneNo = $('#phone').val();
+  var street = $('#street').val();
+  var city = $('#city').val();
+  var state = $('#state').val();
+  var postalCode = $('#postalCode').val();
+  var country = $('#country').val();
+  var orderId = $('#order-id').val();
+  var paymentMethod = $('input[name=payment-method]:checked').val();
+
+  $.ajax({
+    url: 'CheckoutDetailsServlet',
+    type: 'POST',
+    data: {
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      phoneNo: phoneNo,
+      street: street,
+      city: city,
+      state: state,
+      postalCode: postalCode,
+      country: country,
+      orderId: orderId,
+      paymentMethod: paymentMethod,
+    },
+    success: function (response) {
+      if (response.startsWith('Success')) {
+        window.location.href = 'orderComplete.jsp';
+      } else {
+        console.error('Error in processing order:', response);
+        alert('Error in processing order. Please try again later.');
+      }
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+      console.error('AJAX Error:', textStatus, errorThrown);
+      alert('Error sending data. Please try again later.');
+    },
+  });
+}
