@@ -1008,3 +1008,54 @@ nav {
     line-height: 22px;
     color: #141718;
 }
+
+
+/* Admin */
+.admin-sidebar {
+    width: 100%;
+    height: 100vh;
+    background-color: #605F5F;
+    padding: 20px;
+    color: #FEFEFE;
+}
+.admin-sidebar .logo {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+}
+.admin-sidebar .admin-list {
+    margin-top: 40px;
+}
+.admin-sidebar .admin-list li {
+    padding: 20px 10px;
+}
+.admin-sidebar .admin-list li a {
+    color: #fff;
+    font-weight: 500;
+}
+.admin-nav {
+    display: flex;
+    justify-content: flex-end;
+}
+.admin-main {
+    margin-top: 40px;
+}
+.dashbord-box {
+    padding: 20px;
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    color: #FEFEFE;
+}
+.dashbord-box.products {
+    background: #0066ff;
+}
+.dashbord-box.categories{
+    background: #00ccff;
+}
+.dashbord-box.orders {
+    background: #66ff66;
+}
+.dashbord-box.users {
+    background: #38CB89;
+}
