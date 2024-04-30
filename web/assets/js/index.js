@@ -194,7 +194,29 @@ function updateCartWithShippingTotal(subTotal) {
         });
     }
     
-    fetchCartItemsAndUpdateTotal();   
+    function fetchContactInformation() {
+        $.ajax({
+          url: 'ContactInformationServlet',
+          type: 'GET',
+          dataType: 'json',
+          success: function (data) {
+            if (data.length > 0) {
+              var contactInfo = data[0];
+
+              $('#fname').val(contactInfo.firstName);
+              $('#lname').val(contactInfo.lastName);
+              $('#email').val(contactInfo.email);
+              $('#phone').val(contactInfo.phoneNo);
+            }
+          },
+          error: function () {
+            alert('Error fetching contact information.');
+          },
+        });
+  }
+    
+    fetchCartItemsAndUpdateTotal();
+    fetchContactInformation();
  });
  
  

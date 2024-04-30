@@ -12,6 +12,10 @@
         <servlet-name>AddToCartServlet</servlet-name>
         <servlet-class>myPackage.cart.AddToCartServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ContactInformationServlet</servlet-name>
+        <servlet-class>myPackage.cart.ContactInformationServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>TestServlet</servlet-name>
         <url-pattern>/TestServlet</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>AddToCartServlet</servlet-name>
         <url-pattern>/AddToCartServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ContactInformationServlet</servlet-name>
+        <url-pattern>/ContactInformationServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
