@@ -54,9 +54,8 @@
                     </span>
                 </div>
                 
-                <div class="checkout-btn" onclick="sendData()">
-                    <b:Button rounded="false" outlined="false" text="Checkout" name="checkout"/>
-                </div>
+                <button class="button" onclick="sendData()">Checkout</button>
+
             </div>
         </div>
     </div>
