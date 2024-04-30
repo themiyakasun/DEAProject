@@ -326,10 +326,57 @@ function updateCartWithShippingTotal(subTotal) {
     });
     }
     
+    //Display Order
+    function fetchOrderComplete() {
+        $.ajax({
+          url: 'OrderCompleteServlet',
+          type: 'GET',
+          dataType: 'json',
+          success: function (data) {
+            var orderCode = '';
+            var orderedDate = '';
+            var total;
+            var paymentMethod = '';
+
+            var orderedItems = $('.ordered-items');
+            orderedItems.empty();
+
+            $.each(data, function (index, item) {
+              var orderedItem = $('<div>')
+                .addClass('ordered-item')
+                .append(
+                  $('<span>').addClass('circle').text(item.quantity),
+                  $('<img>').attr(
+                    'src',
+                    contextPath + '/uploads/' + item.productImg
+                  )
+                );
+              orderedItems.append(orderedItem);
+
+              orderCode = item.orderCode;
+              orderedDate = item.orderedDate;
+              total = item.total;
+              paymentMethod = item.paymentMethod;
+            });
+
+            $('.order-details .details li:nth-child(1)').text(orderCode);
+            $('.order-details .details li:nth-child(2)').text(orderedDate);
+            $('.order-details .details li:nth-child(3)').text(
+              '$' + total.toFixed(2)
+            );
+            $('.order-details .details li:nth-child(4)').text(paymentMethod);
+          },
+          error: function () {
+            alert('Error fetching order details.');
+          },
+        });
+    }
+    
     fetchCartItemsAndUpdateTotal();
     fetchContactInformation();
     fetchAddressInformation();
     fetchOrderSummary();
+    fetchOrderComplete();
  });
  
  

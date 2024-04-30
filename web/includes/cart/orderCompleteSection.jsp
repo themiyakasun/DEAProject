@@ -24,7 +24,7 @@
                 </ul>
             </div>
             
-            <a href="" class="button">
+            <a href="" class="button" style="width: 20%">
                 Purchase History
             </a>
         </div>
