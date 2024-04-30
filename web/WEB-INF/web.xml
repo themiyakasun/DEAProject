@@ -24,6 +24,14 @@
         <servlet-name>OrderSummaryServlet</servlet-name>
         <servlet-class>myPackage.cart.OrderSummaryServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CheckoutDetailsServlet</servlet-name>
+        <servlet-class>myPackage.cart.CheckoutDetailsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CartDetailsServlet</servlet-name>
+        <servlet-class>myPackage.cart.CartDetailsServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>TestServlet</servlet-name>
         <url-pattern>/TestServlet</url-pattern>
@@ -47,6 +55,14 @@
     <servlet-mapping>
         <servlet-name>OrderSummaryServlet</servlet-name>
         <url-pattern>/OrderSummaryServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CheckoutDetailsServlet</servlet-name>
+        <url-pattern>/CheckoutDetailsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CartDetailsServlet</servlet-name>
+        <url-pattern>/CartDetailsServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
