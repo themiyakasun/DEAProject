@@ -133,7 +133,7 @@ function updateCartWithShippingTotal(subTotal) {
                     });
 
                     var removeButton = $('<button>').addClass('remove-btn').append(
-                        $('<img>').attr('src', 'assets/icons/close.png')
+                        $('<img>').attr('src', 'assets/images/icons/close.png')
                     ).text('Remove').data('cart-id', item.cartId).click(function() {
                         removeCartItem(item.cartId);
                     });
@@ -345,4 +345,52 @@ function updateCartWithShippingTotal(subTotal) {
     cardInfo.style.display = 'none';
     paypalInfo.style.display = 'block';
   }
+}
+
+//Send Cart Data
+function sendData() {
+  var total = $('.cart-sum-total .price').text().trim();
+  var total = total.replace('$', '');
+  var cartItems = [];
+  var shipping = parseInt($('input[name=shipping-method]:checked').val());
+  if (shipping === 15) {
+    shippingMethod = 'Express Shipping';
+  } else {
+    shippingMethod = 'Free Shiping';
+  }
+
+  $('.cart-item').each(function () {
+    var cartId = $(this).attr('id').split('_')[1];
+    var proId = $(this).data('pro-id');
+    var quantity = parseInt($('input[id^=quantity_]', this).val());
+
+    cartItems.push({
+      cartId: cartId,
+      productId: proId,
+      quantity: quantity,
+    });
+  });
+
+  console.log(JSON.stringify(cartItems));
+  $.ajax({
+    url: 'CartDetailsServlet',
+    type: 'POST',
+    data: {
+      total_price: total,
+      cart_items: JSON.stringify(cartItems),
+      shipping_method: shippingMethod,
+    },
+    success: function (response) {
+      if (response.startsWith('Success')) {
+        window.location.href = 'checkout.jsp';
+      } else {
+        console.error('Error in processing order:', response);
+        alert('Error in processing order. Please try again later.');
+      }
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+      console.error('AJAX Error:', textStatus, errorThrown);
+      alert('Error sending data. Please try again later.');
+    },
+  });
 }
