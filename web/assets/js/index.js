@@ -196,3 +196,18 @@ function updateCartWithShippingTotal(subTotal) {
     
     fetchCartItemsAndUpdateTotal();   
  });
+ 
+ 
+ //Change Payment Method 
+ function showPaymentInfo(paymentMethod) {
+  var cardInfo = document.getElementById('card-info');
+  var paypalInfo = document.getElementById('paypal-info');
+
+  if (paymentMethod === 'credit-card') {
+    cardInfo.style.display = 'block';
+    paypalInfo.style.display = 'none';
+  } else if (paymentMethod === 'paypal') {
+    cardInfo.style.display = 'none';
+    paypalInfo.style.display = 'block';
+  }
+}
