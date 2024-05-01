@@ -614,3 +614,16 @@ function signOut() {
 }
 
 
+//Get Categories
+$(document).ready(function(){
+    $.ajax({
+        type: "GET",
+        url: "CategoriesServlet",
+        success: function(categories){
+            categories.forEach(function(category){
+                $('.category-buttons').append('<button class="category" data-category="' + category.name + '">' + category.name + '</button>');
+            });
+        }
+
+    });
+})
