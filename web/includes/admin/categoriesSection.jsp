@@ -20,7 +20,7 @@
                             </div>
                             <div class="col-12">
                               <div class="d-grid">
-                                  <button class="button" onclick="addCategory()">Add Category</button>
+                                  <button class="button" onclick="addCategory()" id="catBtn">Add Category</button>
                               </div>
                             </div>
                            </form>

@@ -30,6 +30,56 @@ function deleteCategory(catId){
     })
 }
 
+
+//Switch add category to Edit Category
+var editMode = false;
+
+function switchMode(catId) {
+    editMode = !editMode;
+    var buttonText = editMode ? "Edit Category" : "Add Category";
+    var onClickFunction = editMode ? "updateCategory()" : "addCategory()";
+    $("#catBtn").text(buttonText).attr("onclick", onClickFunction);
+}
+
+//Get Edit Category Data
+function editCategory(catId) {
+    $.ajax({
+        url: contextPath + '/GetCategoryServlet',
+        type: 'GET',
+        data: { catId: catId },
+        dataType: 'json',
+        success: function(category) {
+            console.log(category);
+            var catId = category[0].catId;
+            var catName = category[0].catName;
+            var catSlug = category[0].catSlug;
+            $('#catId').val(catId);
+            $('#catName').val(catName);
+            $('#catSlug').val(catSlug);
+            switchMode(catId);
+        },
+        error: function() {
+            alert('Error fetching category data.');
+        }
+    });
+}
+
+//Update category
+function updateCategory(){
+    var formData = $("#categoryForm").serialize();
+    
+    $.ajax({
+        type: "POST",
+        url: contextPath + "/UpdateCategoryServlet",
+        data: formData,
+        success: function(response) {
+            $("#loadingIndicator").hide();
+            alert(response);
+        }
+    });
+    return false;
+}
+
 $(document).ready(function() {
     //Display Categories
     function fetchCategories() {
