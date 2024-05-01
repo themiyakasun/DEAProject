@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import myPackage.db.DbUtil;
 
 public class ContactInformationServlet extends HttpServlet {
@@ -20,7 +21,15 @@ public class ContactInformationServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        ArrayList<ContactItem> contactItem = getContactInfoFromDb();
+        int userId = getUserIdFromSession(request);
+        
+        if (userId == -1) {
+            response.getWriter().write("User Not Authenticated");
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            return;
+        }
+        
+        ArrayList<ContactItem> contactItem = getContactInfoFromDb(userId);
         String json = new Gson().toJson(contactItem);
         
         response.setContentType("application/json");
@@ -28,9 +37,8 @@ public class ContactInformationServlet extends HttpServlet {
         response.getWriter().write(json);
     }
     
-        private ArrayList<ContactItem> getContactInfoFromDb(){
+        private ArrayList<ContactItem> getContactInfoFromDb(int userId){
             ArrayList<ContactItem> contactItem = new ArrayList<>();
-            int userId = 1;
 
             try (Connection conn = DbUtil.getConnection();
                  PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users WHERE user_id = ?")){
@@ -49,6 +57,17 @@ public class ContactInformationServlet extends HttpServlet {
                e.getMessage();
             }
             return contactItem;
+    }
+        
+    private int getUserIdFromSession(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            Object userIdObj = session.getAttribute("userId");
+            if (userIdObj instanceof Integer) {
+                return (Integer) userIdObj;
+            }
+        }
+        return -1;
     }
 
 
