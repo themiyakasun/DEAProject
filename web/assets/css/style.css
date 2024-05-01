@@ -498,10 +498,18 @@ nav {
 /* Header */
 .main-header {
     height: 100vh;
-    background: #FFF;
 }
 
 .main-header {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/hero.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.sub-header {
+    height: 20vh;
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/hero.jpg);
     background-position: center;
     background-repeat: no-repeat;
@@ -1159,4 +1167,28 @@ nav {
         height: auto;
         overflow: auto;
     }
+}
+
+.shop-wrapper {
+    padding: 120px 0;
+}
+.product-card-wrapper {
+    margin-top: 120px !important;
+}
+.product-sidebar {
+    width: 40%;
+}
+.product-sidebar h3 {
+    font-size: 22px;
+    font-weight: 600;
+}
+.product-sidebar .category-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+    margin-top: 40px;
+}
+.product-sidebar .category-buttons button {
+    color: #605F5F;
 }
