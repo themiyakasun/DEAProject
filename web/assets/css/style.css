@@ -1224,3 +1224,133 @@ nav {
     display: flex;
     gap: 10px;
 }
+
+/* Newsletter */
+.newsletter {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/newsletter.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 360px;
+}
+.newsletter-content {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    color: #FEFEFE;
+}
+.newsletter-content {
+    font-family: Poppins;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 44px;
+    letter-spacing: -0.4px;
+}
+.newsletter-content p {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px;
+}
+
+/* Footer */
+footer {
+    display: flex;
+    padding: 80px 160px 32px 160px;
+    background: #000;
+    color: #FEFEFE;
+}
+.footer-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 64px;
+}
+.footer-top {
+    width: 100%;
+}
+.footer-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+}
+.footer-details p {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 28px
+}
+.footer-details .footer-social {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+}
+.footer-items {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+}
+.footer-items h3 {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+}
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+}
+.footer-links li,
+.footer-links li a {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    color: #fff;
+}
+
+@media only screen and (max-width: 768px) {
+    footer {
+        padding: 64px 32px 24px 32px;
+    }
+    footer .row > * {
+        padding: 32px 0;
+        border-bottom: 1px solid #6C7275;
+    }
+    
+}
+
+
+/* Latest Products */
+.latest-products,
+.categories-section {
+    padding: 60px 0;
+}
+.latest-products h1,
+.categories-section h1 {
+    font-family: 'Poppins', sans-serif;
+}
+
+.categories-section h1 {
+    text-align: center;
+}
+
+.category-card h4{
+    font-size: 22px;
+    text-align: center;
+    margin-top: 10px;
+}
+.category-card img {
+    width: 100%;
+    height: 300px;
+}
