@@ -13,6 +13,22 @@ function addCategory(){
     return false;
 }
 
+//Delete Category
+function deleteCategory(catId){
+    $.ajax({
+        url: contextPath + '/DeleteServlet',
+        type: 'POST',
+        data: {catId: catId},
+        success: function(response){
+            alert(response);
+            location.reload();
+            
+        },
+        error: function(){
+            alert("Error Deleting category");
+        }
+    })
+}
 
 $(document).ready(function() {
     //Display Categories
@@ -37,8 +53,8 @@ $(document).ready(function() {
                     row.append($('<td>').addClass('cat-order').text(category.catOrder));
                     row.append($('<td>').addClass('action').html(
                         '<div class="d-flex align-items-center gap-3 fs-6">' +
-                        '<button class="text-warning edit-info" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit info" aria-label="Edit" onclick="editCategory(' + category.catId + ')"><img src="../assets/icons/edit.png"/></button>' +
-                        '<button class="text-danger delete-category" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete" aria-label="Delete" onclick="deleteCategory(' + category.catId + ')"><img src="../assets/icons/trash.png"/></button>' +
+                        '<button class="text-warning edit-info" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit info" aria-label="Edit" onclick="editCategory(' + category.catId + ')"><img src="../assets/images/icons/edit.png"/></button>' +
+                        '<button class="text-danger delete-category" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete" aria-label="Delete" onclick="deleteCategory(' + category.catId + ')"><img src="../assets/images/icons/trash.png"/></button>' +
                         '</div>'
                     ));
                     tbody.append(row);

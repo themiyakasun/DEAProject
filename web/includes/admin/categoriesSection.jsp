@@ -16,7 +16,7 @@
                              <div class="col-12">
                               <label class="form-label">Slug</label>
                               <input type="text" class="form-control" placeholder="Slug name" name="cat_slug" id="catSlug">
-<!--                              <input type="hidden" name="catId" id="catId">-->
+                              <input type="hidden" name="catId" id="catId">
                             </div>
                             <div class="col-12">
                               <div class="d-grid">
