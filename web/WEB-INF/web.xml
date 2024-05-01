@@ -104,6 +104,10 @@
         <servlet-name>CategoriesServlet</servlet-name>
         <url-pattern>/CategoriesServlet</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteServlet</servlet-name>
+        <url-pattern>/DeleteServlet</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
