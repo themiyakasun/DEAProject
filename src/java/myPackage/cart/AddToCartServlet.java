@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import myPackage.db.DbUtil;
 
 public class AddToCartServlet extends HttpServlet {
@@ -22,6 +23,12 @@ public class AddToCartServlet extends HttpServlet {
         String subTotalStr = request.getParameter("sub_total");
         
         int userId = getUserIdFromSession(request);
+        
+        if (userId == -1) {
+            response.getWriter().write("User Not Authenticated");
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            return;
+        }
         int productId = Integer.parseInt(productIdStr);
         int quantity = Integer.parseInt(quantityStr);
         double subTotal = Double.parseDouble(subTotalStr);
@@ -61,7 +68,14 @@ public class AddToCartServlet extends HttpServlet {
     }
     
     private int getUserIdFromSession(HttpServletRequest request) {
-        return 2;
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            Object userIdObj = session.getAttribute("userId");
+            if (userIdObj instanceof Integer) {
+                return (Integer) userIdObj;
+            }
+        }
+        return -1;
     }
     
     private void updateQuantityInCart(int userId, int productId, int quantity) {
