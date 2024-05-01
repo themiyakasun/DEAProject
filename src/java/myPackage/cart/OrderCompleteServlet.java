@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import myPackage.db.DbUtil;
 
 public class OrderCompleteServlet extends HttpServlet {
@@ -21,7 +22,14 @@ public class OrderCompleteServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        ArrayList<OrderItem> orderItems = getOrderItemsFromDb();
+        int userId = getUserIdFromSession(request);
+        if (userId == -1) {
+            response.getWriter().write("Error: User ID not found in the session");
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            return;
+        }
+        
+        ArrayList<OrderItem> orderItems = getOrderItemsFromDb(userId);
         String json = new Gson().toJson(orderItems);
         
         response.setContentType("application/json");
@@ -30,9 +38,8 @@ public class OrderCompleteServlet extends HttpServlet {
         response.getWriter().write(json);
     }
     
-    private ArrayList<OrderItem> getOrderItemsFromDb(){
+    private ArrayList<OrderItem> getOrderItemsFromDb(int userId){
         ArrayList<OrderItem> orderItems = new ArrayList<>();
-        int userId = 2;
         try (Connection conn = DbUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(
                  "SELECT o.order_id, o.order_code, o.total, o.shipping_method, o.status, o.payment_method, o.ordered_date, "
@@ -65,7 +72,18 @@ public class OrderCompleteServlet extends HttpServlet {
             e.getMessage();
         }
         return orderItems;
-    } 
+    }
+    
+    private int getUserIdFromSession(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            Object userIdObj = session.getAttribute("userId");
+            if (userIdObj instanceof Integer) {
+                return (Integer) userIdObj;
+            }
+        }
+        return -1; 
+    }
 
 
 }

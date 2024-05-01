@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import myPackage.db.DbUtil;
 
 public class CartDetailsServlet extends HttpServlet {
@@ -31,7 +32,13 @@ public class CartDetailsServlet extends HttpServlet {
         
         String cartItemsJson = request.getParameter("cart_items");
         String shippingMethod = request.getParameter("shipping_method");
-        int userId = getUserIdFromSession();
+        int userId = getUserIdFromSession(request);
+        
+        if (userId == -1) {
+            response.getWriter().write("Error: User ID not found in the session");
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            return;
+        }
         
         try (Connection conn = DbUtil.getConnection()) {
             conn.setAutoCommit(false);
@@ -130,8 +137,15 @@ public class CartDetailsServlet extends HttpServlet {
           return false;
     }
     
-    private int getUserIdFromSession() {
-        return 2;
+    private int getUserIdFromSession(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            Object userIdObj = session.getAttribute("userId");
+            if (userIdObj instanceof Integer) {
+                return (Integer) userIdObj;
+            }
+        }
+        return -1; 
     }
 
 

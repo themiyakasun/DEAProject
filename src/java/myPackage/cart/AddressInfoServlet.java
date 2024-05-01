@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import myPackage.db.DbUtil;
 
 public class AddressInfoServlet extends HttpServlet {
@@ -19,7 +20,14 @@ public class AddressInfoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        ArrayList<AddressItem> address = getAddressInfoDb();
+        int userId = getUserIdFromSession(request);
+        if (userId == -1) {
+            response.getWriter().write("Error: User ID not found in the session");
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            return;
+        }
+        
+        ArrayList<AddressItem> address = getAddressInfoDb(userId);
         String json = new Gson().toJson(address);
         
         response.setContentType("application/json");
@@ -27,9 +35,8 @@ public class AddressInfoServlet extends HttpServlet {
         response.getWriter().write(json);
     }
     
-    private ArrayList<AddressItem> getAddressInfoDb(){
+    private ArrayList<AddressItem> getAddressInfoDb(int userId){
         ArrayList<AddressItem> address = new ArrayList<>();
-        int userId = 1;
         
         try (Connection conn = DbUtil.getConnection();
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM addresses WHERE user_id = ?")){
@@ -50,6 +57,17 @@ public class AddressInfoServlet extends HttpServlet {
             e.getMessage();
         }
         return address;
+    }
+    
+    private int getUserIdFromSession(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            Object userIdObj = session.getAttribute("userId");
+            if (userIdObj instanceof Integer) {
+                return (Integer) userIdObj;
+            }
+        }
+        return -1; 
     }
 
 

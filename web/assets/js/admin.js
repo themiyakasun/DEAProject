@@ -176,8 +176,39 @@ $(document).ready(function() {
         }
     }
     
+    function fetchOrders() {
+        $.ajax({
+            url: contextPath + '/OrdersServlet',
+            type: 'GET',
+            dataType: 'json',
+            success: function(orders) {
+                console.log(orders);
+                var tbody = $('#ordersTableBody');
+                tbody.empty();
+
+                if (orders.length === 0) {
+                    tbody.append('<tr><td colspan="6" class="text-center">No orders available</td></tr>');
+                } else {
+                    $.each(orders, function(index, order) {
+                        var row = $('<tr>');
+                        row.append($('<td>').text(order.orderCode));
+                        row.append($('<td>').text(order.userName));
+                        row.append($('<td>').text('$' + order.total.toFixed(2)));
+                        row.append($('<td>').html('<span class="'+ getStatusBadgeClass(order.status) + '">' + order.status + '</span>'));
+                        row.append($('<td>').text(order.date));
+                        tbody.append(row);
+                    });
+                }
+            },
+            error: function() {
+                alert('Error fetching orders.');
+            }
+        });
+    }
+    
     fetchCategories();
     fetchProducts();
+    fetchOrders();
 });
 
 //Add Product
@@ -257,4 +288,21 @@ function updateProduct(){
        }
     });
     return false;
+}
+
+
+//Sign out
+function signOut() {
+  $.ajax({
+    type: 'GET',
+    url: contextPath + '/SignoutServlet',
+    success: function (response) {
+      if (response === 'Sign out Succesfully') {
+        window.location.href = 'signin.jsp';
+      }
+    },
+    error: function (xhr, status, error) {
+      alert('Error occurred: ' + error);
+    },
+  });
 }

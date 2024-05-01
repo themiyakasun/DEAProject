@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import myPackage.db.DbUtil;
 
 public class CheckoutDetailsServlet extends HttpServlet {
@@ -32,7 +33,13 @@ public class CheckoutDetailsServlet extends HttpServlet {
         String paymentMethod = request.getParameter("paymentMethod");
         
         int orderId = parseInt(orderIdStr);
-        int userId = 2;
+        
+        int userId = getUserIdFromSession(request);
+        if (userId == -1) {
+            response.getWriter().write("Error: User ID not found in the session");
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            return;
+        }
         
         try (Connection conn = DbUtil.getConnection()) {
             updateUser(conn, firstName, lastName, email, phoneNo, userId);
@@ -106,6 +113,17 @@ public class CheckoutDetailsServlet extends HttpServlet {
             stmt.setInt(1, userId);
             stmt.executeUpdate();
         }
+    }
+    
+    private int getUserIdFromSession(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            Object userIdObj = session.getAttribute("userId");
+            if (userIdObj instanceof Integer) {
+                return (Integer) userIdObj;
+            }
+        }
+        return -1; 
     }
 
 
