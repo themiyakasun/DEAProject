@@ -34,14 +34,12 @@
                     <div class="product-sidebar">
                         <h3>Products Categories</h3>
                         <div class="category-buttons">
-                            <button class="">All</button>
-                            <button class="">Fruits</button>
-                            <button class="">Fruits</button>
+                            <button class="categoryBtn" data-category=0>All</button>
                         </div>
                     </div>
 
-                    <div class="product-container">
-                        <div class="row">
+                    <div class="product-container" style="width: 100%">
+                        <div class="row" id="productContainer">
                             <div class="col-md-4 product-card-wrapper">
                                 <a href="#" class="product-card">
                                     <div class="product-box">
