@@ -45,6 +45,18 @@
         <servlet-class>myPackage.admin.CategoriesServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>SigninServlet</servlet-name>
+        <servlet-class>myPackage.authentication.SigninServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SignoutServlet</servlet-name>
+        <servlet-class>myPackage.authentication.SignoutServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SignupServlet</servlet-name>
+        <servlet-class>myPackage.authentication.SignupServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>DeleteServlet</servlet-name>
         <servlet-class>myPackage.admin.DeleteServlet</servlet-class>
     </servlet>
@@ -91,10 +103,6 @@
     <servlet-mapping>
         <servlet-name>CategoriesServlet</servlet-name>
         <url-pattern>/CategoriesServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>DeleteServlet</servlet-name>
-        <url-pattern>/DeleteServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
