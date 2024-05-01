@@ -495,6 +495,44 @@ nav {
     color: #141718;
 }
 
+/* Header */
+.main-header {
+    height: 100vh;
+    background: #FFF;
+}
+
+.main-header {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/hero.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.hero-text {
+    position: absolute;
+    top: 50%;
+    left: 15%;
+    transform: translate(-15%,-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+.hero-text p {
+    color: #FFF;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+}
+.hero-text h1 {
+    color: #FFF;
+    font-size: 48px;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+}
+
 
 /* Title Section */
 .title-section {
