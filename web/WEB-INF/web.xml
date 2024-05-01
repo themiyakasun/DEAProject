@@ -88,6 +88,10 @@
         <servlet-name>OrdersServlet</servlet-name>
         <servlet-class>myPackage.admin.OrdersServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProductByCatServlet</servlet-name>
+        <servlet-class>myPackage.shop.ProductByCatServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>TestServlet</servlet-name>
         <url-pattern>/TestServlet</url-pattern>
@@ -175,6 +179,10 @@
     <servlet-mapping>
         <servlet-name>SignoutServlet</servlet-name>
         <url-pattern>/SignoutServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProductByCatServlet</servlet-name>
+        <url-pattern>/ProductByCatServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

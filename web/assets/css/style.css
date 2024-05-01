@@ -1191,4 +1191,5 @@ nav {
 }
 .product-sidebar .category-buttons button {
     color: #605F5F;
+    text-transform: capitalize;
 }

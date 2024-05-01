@@ -621,9 +621,78 @@ $(document).ready(function(){
         url: "CategoriesServlet",
         success: function(categories){
             categories.forEach(function(category){
-                $('.category-buttons').append('<button class="category" data-category="' + category.name + '">' + category.name + '</button>');
+                $('.category-buttons').append('<button class="categoryBtn" data-category="' + category.catId + '">' + category.catName + '</button>');
             });
         }
 
     });
 })
+
+$(document).ready(function(){
+    // Function to load all products when the page loads
+    function loadAllProducts() {
+        $.ajax({
+            type: "POST",
+            url: contextPath + "/ProductByCatServlet",
+            data: { category: 0 }, 
+            success: function(products){
+                console.log(products)
+                $('#productContainer').empty();
+                products.forEach(function(product){
+                    var productHTML = '<div class="col-md-4 product-card-wrapper">' +
+                                        '<a href="#" class="product-card">' +
+                                        '<div class="product-box">' +
+                                        '<img src="assets/images/products/plate01.png" class="product-img"/>' +
+                                        '<h3>' + product.proName + '</h3>' +
+                                        '<p>Rs.' + product.proPrice + '</p>' +
+                                        '<form id="addToCartForm" method="POST">' +
+                                        '<input type="hidden" name="pro_id" value="' + product.proId +'" />'+
+                                        '<input type="hidden" name="quantity" value="1" />' +
+                                        '<input type="hidden" name="sub_total" value="' + product.proPrice + '" />' +
+                                        '<button class="button" onclick="addToCart()">Add To Cart</button>' +
+                                        '</form>'+
+                                        '</div>' +
+                                        '</a>' +
+                                        '</div>';
+                    $('#productContainer').append(productHTML);
+                });
+            }
+        });
+    }
+
+    loadAllProducts();
+
+    // Handle click event on category buttons
+    $(document).on('click', '.categoryBtn', function(){
+        var category = $(this).data('category');
+        console.log(category)
+        $.ajax({
+            type: "POST",
+            url: contextPath + "/ProductByCatServlet",
+            data: { category: category },
+            success: function(products){
+                console.log(products)
+                $('#productContainer').empty();
+                products.forEach(function(product){
+                    var productHTML = '<div class="col-md-4 product-card-wrapper">' +
+                                        '<a href="#" class="product-card">' +
+                                        '<div class="product-box">' +
+                                        '<img src="assets/images/products/plate01.png" class="product-img"/>' +
+                                        '<h3>' + product.proName + '</h3>' +
+                                        '<p>Rs.' + product.proPrice + '</p>' +
+                                        '<form id="addToCartForm" method="POST">' +
+                                        '<input type="hidden" name="pro_id" value="' + product.proId +'" />'+
+                                        '<input type="hidden" name="quantity" value="1" />' +
+                                        '<input type="hidden" name="sub_total" value="' + product.proPrice + '" />' +
+                                        '<button class="button" onclick="addToCart()">Add To Cart</button>' +
+                                        '</form>'+
+                                        '</div>' +
+                                        '</a>' +
+                                        '</div>';
+                    $('#productContainer').append(productHTML);
+                });
+            }
+        });
+    });
+});
+ 
