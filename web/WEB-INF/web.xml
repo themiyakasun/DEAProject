@@ -36,6 +36,14 @@
         <servlet-name>OrderCompleteServlet</servlet-name>
         <servlet-class>myPackage.cart.OrderCompleteServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddCategoryServlet</servlet-name>
+        <servlet-class>myPackage.admin.AddCategoryServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CategoriesServlet</servlet-name>
+        <servlet-class>myPackage.admin.CategoriesServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>TestServlet</servlet-name>
         <url-pattern>/TestServlet</url-pattern>
@@ -71,6 +79,14 @@
     <servlet-mapping>
         <servlet-name>OrderCompleteServlet</servlet-name>
         <url-pattern>/OrderCompleteServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddCategoryServlet</servlet-name>
+        <url-pattern>/AddCategoryServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CategoriesServlet</servlet-name>
+        <url-pattern>/CategoriesServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

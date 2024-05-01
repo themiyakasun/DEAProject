@@ -3,12 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Uni/Year%202/Sem%201/DEA/Assignment%202/DEAProject/web/assets/js/index.js</file>
-            <file>file:/D:/Uni/Year%202/Sem%201/DEA/Assignment%202/DEAProject/src/java/myPackage/cart/ContactInformationServlet.java</file>
-            <file>file:/D:/Uni/Year%202/Sem%201/DEA/Assignment%202/DEAProject/src/java/myPackage/cart/ContactItem.java</file>
-            <file>file:/D:/Uni/Year%202/Sem%201/DEA/Assignment%202/DEAProject/src/java/myPackage/cart/AddressInfoServlet.java</file>
-            <file>file:/D:/Uni/Year%202/Sem%201/DEA/Assignment%202/DEAProject/web/includes/cart/checkoutSection.jsp</file>
-            <file>file:/D:/Uni/Year%202/Sem%201/DEA/Assignment%202/DEAProject/src/java/myPackage/cart/AddressItem.java</file>
+            <file>file:/D:/Uni/Year%202/Sem%201/DEA/Assignment%202/DEAProject/web/assets/css/style.css</file>
+            <file>file:/D:/Uni/Year%202/Sem%201/DEA/Assignment%202/DEAProject/web/includes/admin/addProductSection.jsp</file>
+            <file>file:/D:/Uni/Year%202/Sem%201/DEA/Assignment%202/DEAProject/web/includes/admin/sidebar.jsp</file>
+            <file>file:/D:/Uni/Year%202/Sem%201/DEA/Assignment%202/DEAProject/web/admin/addUser.jsp</file>
+            <file>file:/D:/Uni/Year%202/Sem%201/DEA/Assignment%202/DEAProject/web/admin/users.jsp</file>
+            <file>file:/D:/Uni/Year%202/Sem%201/DEA/Assignment%202/DEAProject/web/includes/admin/addUserSection.jsp</file>
+            <file>file:/D:/Uni/Year%202/Sem%201/DEA/Assignment%202/DEAProject/web/admin/index.jsp</file>
         </group>
     </open-files>
 </project-private>
