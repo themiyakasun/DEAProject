@@ -30,6 +30,58 @@ function deleteCategory(catId){
     })
 }
 
+
+//Switch add category to Edit Category
+var editMode = false;
+
+function switchMode(catId) {
+    editMode = !editMode;
+    var buttonText = editMode ? "Edit Category" : "Add Category";
+    var onClickFunction = editMode ? "updateCategory()" : "addCategory()";
+    $("#catBtn").text(buttonText).attr("onclick", onClickFunction);
+}
+
+//Get Edit Category Data
+function editCategory(catId) {
+    $.ajax({
+        url: contextPath + '/GetCategoryServlet',
+        type: 'GET',
+        data: { catId: catId },
+        dataType: 'json',
+        success: function(category) {
+            console.log(category);
+            var catId = category[0].catId;
+            var catName = category[0].catName;
+            var catSlug = category[0].catSlug;
+            $('#catId').val(catId);
+            $('#catName').val(catName);
+            $('#catSlug').val(catSlug);
+            switchMode(catId);
+        },
+        error: function() {
+            alert('Error fetching category data.');
+        }
+    });
+}
+
+//Update category
+function updateCategory(){
+    var formData = $("#categoryForm").serialize();
+    
+    $.ajax({
+        type: "POST",
+        url: contextPath + "/UpdateCategoryServlet",
+        data: formData,
+        success: function(response) {
+            $("#loadingIndicator").hide();
+            alert(response);
+        }
+    });
+    return false;
+}
+
+
+
 $(document).ready(function() {
     //Display Categories
     function fetchCategories() {
@@ -69,5 +121,115 @@ $(document).ready(function() {
         });
     }
     
+    function fetchProducts() {
+        $.ajax({
+            url: contextPath + '/ProductsServlet',
+            type: 'GET',
+            dataType: 'json',
+            success: function(products) {
+                populateProductGrid(products);
+            },
+            error: function() {
+                alert('Error fetching products.');
+            }
+        });
+    }
+    
+    function populateProductGrid(products) {
+        var productGrid = $('#productGrid');
+        productGrid.empty();
+
+        if (products.length === 0) {
+            productGrid.append('<div class="col"><p>No products available</p></div>');
+        } else {
+            $.each(products, function(index, product) {
+                var card = $('<div>').addClass('col');
+                var cardBody = $('<div>').addClass('card-body text-center');
+
+                var img = $('<img>').addClass('img-fluid mb-3').attr('src', contextPath + '/uploads/' + product.proImg).attr('alt', '');
+                var title = $('<h6>').addClass('product-title').text(product.proName);
+                var price = $('<p>').addClass('product-price fs-5 mb-1').html('<span>$' + product.proPrice + '</span>');
+                var rating = $('<div>').addClass('rating mb-0');
+
+                for (var i = 0; i < Math.round(product.proReviews); i++) {
+                    rating.append('<i class="bi bi-star-fill text-warning"></i>');
+                }
+                var reviews = $('<small>').text(product.proReviews + ' Reviews');
+
+                var actions = $('<div>').addClass('actions d-flex align-items-center justify-content-center gap-2 mt-3');
+                var editButton = $('<button>').addClass('btn btn-sm btn-outline-primary').attr('onclick', 'editProduct('+ product.proId +')').html('<i class="bi bi-pencil-fill"></i> Edit');
+                var deleteButton = $('<button>').addClass('btn btn-sm btn-outline-danger').attr('onclick', 'deleteProduct('+ product.proId +')').html('<i class="bi bi-trash-fill"></i> Delete');
+
+                actions.append(editButton);
+                actions.append(deleteButton);
+
+                cardBody.append(img);
+                cardBody.append(title);
+                cardBody.append(price);
+                cardBody.append(rating);
+                cardBody.append(reviews);
+                cardBody.append(actions);
+
+                card.append(cardBody);
+                productGrid.append(card);
+            });
+        }
+    }
+    
     fetchCategories();
+    fetchProducts();
 });
+
+//Add Product
+function addProduct(){
+    event.preventDefault();
+    var formData = new FormData($('#addProductForm')[0]);
+    
+    
+    var fileInput = $('#pro_img')[0];
+    var fileName = "";
+    if (fileInput.files.length > 0) {
+        fileName = fileInput.files[0];
+    } else {
+        console.log("No file selected");
+    }
+
+    formData.append('pro_img', fileName);
+
+    $.ajax({
+        type: "POST",
+        url: contextPath + "/AddProductServlet",
+        data: formData,
+        success: function(response) {
+            $("#loadingIndicator").hide();
+            alert(response);
+        }
+    });
+    return false;
+}
+
+
+//Edit Product Url
+function editProduct(proId) {
+    window.location.href = contextPath + '/admin/editProduct.jsp?proId=' + proId;
+}
+
+//Image Change
+function changeImage(){
+    event.preventDefault();
+    var imgInput = $('#image_input');
+    var imageBox = $('#image_box');
+    imageBox.addClass('hidden');
+    imgInput.removeClass('hidden');
+    imgInput.addClass('active');
+}
+
+function cancelImageChange(){
+    event.preventDefault();
+    var imgInput = $('#image_input');
+    var imageBox = $('#image_box');
+    imgInput.removeClass("active");
+    imgInput.addClass("hidden");
+    imageBox.removeClass("hidden");
+    imageBox.addClass("active");    
+}
