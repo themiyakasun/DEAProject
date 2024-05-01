@@ -1193,3 +1193,34 @@ nav {
     color: #605F5F;
     text-transform: capitalize;
 }
+
+
+/* Product Details Section */
+.product-details-section {
+    margin: 40px 0;
+}
+.product-details-img {
+    width: 100%;
+    height: 600px;
+}
+.product-details-img img {
+    width: 100%;
+    height: 100%;
+}
+.product-details {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.product-details h1 {
+    font-family: 'Poppins', sans-serif;
+}
+.product-details p {
+    color: #6C7275;
+}
+.product-details-action {
+    margin-top: 40px;
+    display: flex;
+    gap: 10px;
+}

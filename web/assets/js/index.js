@@ -640,7 +640,7 @@ $(document).ready(function(){
                 $('#productContainer').empty();
                 products.forEach(function(product){
                     var productHTML = '<div class="col-md-4 product-card-wrapper">' +
-                                        '<a href="#" class="product-card">' +
+                                        '<a href="productDetails.jsp?proId='+ product.proId +'" class="product-card">' +
                                         '<div class="product-box">' +
                                         '<img src="assets/images/products/plate01.png" class="product-img"/>' +
                                         '<h3>' + product.proName + '</h3>' +
