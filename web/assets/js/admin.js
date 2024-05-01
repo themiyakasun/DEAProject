@@ -311,7 +311,7 @@ function signOut() {
     url: contextPath + '/SignoutServlet',
     success: function (response) {
       if (response === 'Sign out Succesfully') {
-        window.location.href = 'signin.jsp';
+        window.location.href = '../signin.jsp';
       }
     },
     error: function (xhr, status, error) {

@@ -142,7 +142,7 @@ function updateCartWithShippingTotal(subTotal) {
 
                     var productDetailsColumn = $('<td>').append(
                         $('<div>').addClass('cart-product-details').append(
-                            $('<img>').attr('src', contextPath + '/uploads/' + item.productImage).addClass('pro-img'),
+                            $('<img>').attr('src', 'assets/images/products/plate01.png').addClass('pro-img'),
                             $('<div>').addClass('pro-details').append(
                                 $('<h3>').text(item.productName),
                                 $('<span>').text('Color: Black'),
@@ -263,7 +263,7 @@ function updateCartWithShippingTotal(subTotal) {
                 .append(
                   $('<img>')
                     .addClass('pro-img')
-                    .attr('src', contextPath + '/uploads/' + item.productImg),
+                    .attr('src', 'assets/images/products/plate01.png'),
                   $('<div>')
                     .addClass('details')
                     .append(
@@ -348,7 +348,7 @@ function updateCartWithShippingTotal(subTotal) {
                   $('<span>').addClass('circle').text(item.quantity),
                   $('<img>').attr(
                     'src',
-                    contextPath + '/uploads/' + item.productImg
+                    'assets/images/products/plate01.png'
                   )
                 );
               orderedItems.append(orderedItem);

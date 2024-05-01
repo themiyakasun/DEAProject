@@ -20,6 +20,16 @@
         <%@include file="includes/shared/navbar.jsp" %>
         <%@include file="includes/shared/search.jsp" %>
         
+        <header class="main-header">
+            <div class="container">
+                <div class="hero-text">
+                    <p>MADE WITH LOVE</p>
+                    <h1>Best Foods Which Makes <br/> You Hungry</h1>
+                    <a href="shop.jsp" class="button" style="width: 30%; background: #38CB89;">Show More</a>
+                </div>
+            </div>
+        </header>
+        
         <div class="container">
             <div class="row">
                 <div class="col-md-3 mb-5">
