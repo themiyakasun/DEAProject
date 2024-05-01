@@ -1,5 +1,4 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="b" uri="/WEB-INF/tlds/buttonTags" %>
 <!DOCTYPE html>
 
     <head>
@@ -7,7 +6,7 @@
         <title>E-Commerce</title>
         
         <!--CSS-->
-        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         
         <!-- Fonts -->
@@ -40,10 +39,10 @@
                             <div class="input-wrapper">
                                 <input type="password" placeholder="Password" id="passwordInput" name="password"  style="color: #000"/>
                             </div>
-                            <button onclick="togglePasswordVisibility()"><img src="assets/icons/eye.png" /></button>
+                            <button onclick="togglePasswordVisibility()"><img src="assets/images/icons/eye.png" /></button>
                         </div>
                         
-                        <b:Button outlined="false" rounded="false" text="Sign in" id="sign-in" onclick="signIn()"/>
+                        <button class="button" onclick="signIn()">Sign in</button>
                     </form>
                 </div>
             </div>
@@ -56,7 +55,7 @@
             var contextPath = "${pageContext.request.contextPath}";
         </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-        <script src="js/index.js"></script>
+        <script src="assets/js/index.js"></script>
 
     </body>
 </html>

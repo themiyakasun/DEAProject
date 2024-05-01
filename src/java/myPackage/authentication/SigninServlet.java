@@ -1,7 +1,6 @@
 package myPackage.authentication;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
@@ -62,6 +61,7 @@ public class SigninServlet extends HttpServlet {
         }
     }
     
+        
     private boolean checkUserExists(String email){
         try(Connection conn = DbUtil.getConnection()){
             String query = "SELECT COUNT(*) FROM users WHERE user_email = ?";
@@ -154,6 +154,7 @@ public class SigninServlet extends HttpServlet {
         }
         return result.toString();
     }
+
 
 
 }
