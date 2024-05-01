@@ -233,3 +233,28 @@ function cancelImageChange(){
     imageBox.removeClass("hidden");
     imageBox.addClass("active");    
 }
+
+
+function updateProduct(){
+    event.preventDefault();
+    var formData = $("#editProductForm").serialize();
+    var proNewImg = $("#pro_img").val();
+    
+    if (proNewImg) {
+        formData += "&pro_img=" + proNewImg;
+    } else {
+        var proImg = $("#img_input").val();
+        formData += "&pro_img=" + proImg;
+    }
+
+
+    $.ajax({
+        type: "POST",
+        url: contextPath + "/UpdateProductServlet",
+        data: formData,
+        success: function(response) {
+            window.location.href = contextPath +'/admin/products.jsp';
+       }
+    });
+    return false;
+}
