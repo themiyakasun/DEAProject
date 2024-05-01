@@ -189,7 +189,7 @@ function updateCartWithShippingTotal(subTotal) {
                 
             },
             error: function() {
-                alert('Error fetching cart items.');
+//                alert('Error fetching cart items.');
             }
         });
     }
@@ -212,7 +212,7 @@ function updateCartWithShippingTotal(subTotal) {
             }
           },
           error: function () {
-            alert('Error fetching contact information.');
+//            alert('Error fetching contact information.');
           },
         });
   }
@@ -235,7 +235,7 @@ function updateCartWithShippingTotal(subTotal) {
             }
           },
           error: function () {
-            alert('Error fetching contact information.');
+//            alert('Error fetching contact information.');
           },
         });
     }
@@ -321,7 +321,7 @@ function updateCartWithShippingTotal(subTotal) {
         );
       },
       error: function () {
-        alert('Error fetching cart items.');
+//        alert('Error fetching cart items.');
       },
     });
     }
@@ -367,7 +367,7 @@ function updateCartWithShippingTotal(subTotal) {
             $('.order-details .details li:nth-child(4)').text(paymentMethod);
           },
           error: function () {
-            alert('Error fetching order details.');
+//            alert('Error fetching order details.');
           },
         });
     }

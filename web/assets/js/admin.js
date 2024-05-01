@@ -206,6 +206,19 @@ $(document).ready(function() {
         });
     }
     
+    function getStatusBadgeClass(status) {
+        switch (status) {
+            case 'Received':
+                return 'alert-success';
+            case 'Cancelled':
+                return 'alert-danger';
+            case 'Pending':
+                return 'alert-warning';
+            default:
+                return '';
+        }
+    }
+    
     fetchCategories();
     fetchProducts();
     fetchOrders();

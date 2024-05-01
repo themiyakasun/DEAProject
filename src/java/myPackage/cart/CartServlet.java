@@ -29,7 +29,7 @@ public class CartServlet extends HttpServlet {
             return;
         }
         
-        ArrayList<CartItem> cartItems = getCartItemsFromDb();
+        ArrayList<CartItem> cartItems = getCartItemsFromDb(userId);
         String json = new Gson().toJson(cartItems);
         
         response.setContentType("application/json");
@@ -38,9 +38,8 @@ public class CartServlet extends HttpServlet {
         response.getWriter().write(json);
     }
     
-    private ArrayList<CartItem> getCartItemsFromDb() {
+    private ArrayList<CartItem> getCartItemsFromDb(int userId) {
         ArrayList<CartItem> cartItems = new ArrayList<>();
-        int userId = 2;
         String query = "SELECT c.cart_id, c.pro_id, c.quantity, c.sub_total, p.pro_name, p.pro_img, p.pro_price " +
                        "FROM cart c " +
                        "INNER JOIN products p ON c.pro_id = p.pro_id " +

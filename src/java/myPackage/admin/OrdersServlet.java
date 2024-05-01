@@ -34,15 +34,15 @@ public class OrdersServlet extends HttpServlet {
         ArrayList<Order> orders = new ArrayList<>();
         
         try(Connection conn = DbUtil.getConnection()){
-            String query = "SELECT o.*, u.first_name, u.last_name FROM orders o JOIN users u ON o.user_id = u.user_id";
+            String query = "SELECT o.*, u.user_fname, u.user_lname FROM orders o JOIN users u ON o.user_id = u.user_id";
             PreparedStatement stmt = conn.prepareStatement(query);
             
             try(ResultSet rs = stmt.executeQuery()){
                 while(rs.next()){
                     int orderId = rs.getInt("order_id");
                     String orderCode = rs.getString("order_code");
-                    String firstName = rs.getString("first_name");
-                    String lastName = rs.getString("last_name");
+                    String firstName = rs.getString("user_fname");
+                    String lastName = rs.getString("user_lname");
                     double total = rs.getDouble("total");
                     String status = rs.getString("status");
                     String orderDate = rs.getString("ordered_date");

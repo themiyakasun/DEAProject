@@ -164,6 +164,18 @@
         <servlet-name>OrdersServlet</servlet-name>
         <url-pattern>/OrdersServlet</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SigninServlet</servlet-name>
+        <url-pattern>/SigninServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SignupServlet</servlet-name>
+        <url-pattern>/SignupServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SignoutServlet</servlet-name>
+        <url-pattern>/SignoutServlet</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
