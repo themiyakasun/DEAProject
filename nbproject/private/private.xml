@@ -3,8 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/D:/Uni/Year%202/Sem%201/DEA/Assignment%202/DEAProject/src/java/myPackage/admin/Product.java</file>
             <file>file:/D:/Uni/Year%202/Sem%201/DEA/Assignment%202/DEAProject/web/assets/js/admin.js</file>
-            <file>file:/D:/Uni/Year%202/Sem%201/DEA/Assignment%202/DEAProject/web/includes/admin/addProductSection.jsp</file>
+            <file>file:/D:/Uni/Year%202/Sem%201/DEA/Assignment%202/DEAProject/web/includes/admin/editProductSection.jsp</file>
+            <file>file:/D:/Uni/Year%202/Sem%201/DEA/Assignment%202/DEAProject/web/admin/editProduct.jsp</file>
+            <file>file:/D:/Uni/Year%202/Sem%201/DEA/Assignment%202/DEAProject/src/java/myPackage/admin/ProductItem.java</file>
+            <file>file:/D:/Uni/Year%202/Sem%201/DEA/Assignment%202/DEAProject/web/includes/admin/sidebar.jsp</file>
+            <file>file:/D:/Uni/Year%202/Sem%201/DEA/Assignment%202/DEAProject/src/java/myPackage/admin/GetProductServlet.java</file>
         </group>
     </open-files>
 </project-private>

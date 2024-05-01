@@ -548,7 +548,7 @@ function signUp() {
 
   $.ajax({
     type: 'POST',
-    url: 'SignupServlet',
+    url: contextPath + '/SignupServlet',
     data: formData,
     success: function (response) {
       alert(response);
@@ -557,7 +557,7 @@ function signUp() {
       }
     },
     error: function (xhr, status, error) {
-      alert('Error occurred: ' + error);
+//      alert('Error occurred: ' + error);
     },
   });
 }
@@ -601,7 +601,7 @@ function signIn() {
 function signOut() {
   $.ajax({
     type: 'GET',
-    url: 'SignoutServlet',
+    url: contextPath + '/SignoutServlet',
     success: function (response) {
       if (response === 'Sign out Succesfully') {
         window.location.href = 'signin.jsp';
