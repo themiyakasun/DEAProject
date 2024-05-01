@@ -30,25 +30,108 @@
             </div>
         </header>
         
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 mb-5">
-                    <a href="productDetails.jsp?proId=1" class="product-card">
-                        <div class="product-box">
-                            <img src="assets/images/products/plate01.png" class="product-img"/>
-                            <h3>Excellent food</h3>
-                            <p>Rs.100.00</p>
-                            <form id="addToCartForm" method="POST">
-                                <input type="hidden" name="pro_id" value="1" id="pro_id" />
-                                <input type="hidden" name="quantity" value="1" id="quantity" />
-                                <input type="hidden" name="sub_total" value="199.10" id="sub_total" />
-                                <button class="button" onclick="addToCart()">Add To Cart</button>
-                            </form>
-                        </div>
-                    </a>
+        <section class='latest-products'>
+            <div class="container">
+                <h1>Latest Products</h1>
+                            
+                <div class='row'>
+                    <div class="col-md-4 product-card-wrapper">
+                        <a href="productDetails.jsp?proId=1" class="product-card">
+                            <div class="product-box">
+                                <img src="assets/images/products/plate01.png" class="product-img"/>
+                                <h3>Product1</h3>
+                                <p>Rs.2000</p>
+                                <form class="addToCartForm" method="POST">
+                                    <input type="hidden" name="pro_id" value="{{product.proId}}" />
+                                    <input type="hidden" name="quantity" value="1" />
+                                    <input type="hidden" name="sub_total" value="{{product.proPrice}}" />
+                                    <button type="submit" class="button">Add To Cart</button>
+                                </form>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 product-card-wrapper">
+                        <a href="productDetails.jsp?proId=1" class="product-card">
+                            <div class="product-box">
+                                <img src="assets/images/products/plate01.png" class="product-img"/>
+                                <h3>Product1</h3>
+                                <p>Rs.2000</p>
+                                <form class="addToCartForm" method="POST">
+                                    <input type="hidden" name="pro_id" value="{{product.proId}}" />
+                                    <input type="hidden" name="quantity" value="1" />
+                                    <input type="hidden" name="sub_total" value="{{product.proPrice}}" />
+                                    <button type="submit" class="button">Add To Cart</button>
+                                </form>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 product-card-wrapper">
+                        <a href="productDetails.jsp?proId=1" class="product-card">
+                            <div class="product-box">
+                                <img src="assets/images/products/plate01.png" class="product-img"/>
+                                <h3>Product1</h3>
+                                <p>Rs.2000</p>
+                                <form class="addToCartForm" method="POST">
+                                    <input type="hidden" name="pro_id" value="{{product.proId}}" />
+                                    <input type="hidden" name="quantity" value="1" />
+                                    <input type="hidden" name="sub_total" value="{{product.proPrice}}" />
+                                    <button type="submit" class="button">Add To Cart</button>
+                                </form>
+                            </div>
+                        </a>
+                    </div>
+                    
                 </div>
             </div>
-        </div>
+        </section>
+        
+        <section class="categories-section">
+            <div class="container">
+                <h1>Shop By Categories</h1>
+                
+                <div class="row">
+                    <div class="col-md-4 mt-5 category-card">
+                        <a>
+                            <img src="assets/images/categories/fruits.jpg"/>
+                            <h4>Fruits</h4>
+                        </a>
+                    </div>
+                    <div class="col-md-4 mt-5 category-card">
+                        <a>
+                            <img src="assets/images/categories/meat.jpeg"/>
+                            <h4>Meat and Poultry</h4>
+                        </a>
+                    </div>
+                    <div class="col-md-4 mt-5 category-card">
+                        <a>
+                            <img src="assets/images/categories/bakery.jpeg"/>
+                            <h4>Bakery</h4>
+                        </a>
+                    </div>
+                    <div class="col-md-4 mt-5 category-card">
+                        <a>
+                            <img src="assets/images/categories/seafood.jpg"/>
+                            <h4>Sea Foods</h4>
+                        </a>
+                    </div>
+                    <div class="col-md-4 mt-5 category-card">
+                        <a>
+                            <img src="assets/images/categories/Condiments and Sauces.jpg"/>
+                            <h4>Condiments and Sauces</h4>
+                        </a>
+                    </div>
+                    <div class="col-md-4 mt-5 category-card">
+                        <a>
+                            <img src="assets/images/categories/Beverages.jpg"/>
+                            <h4>Beverages</h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <%@include file="includes/shared/newsletter.jsp" %>
+        <%@include file="includes/shared/footer.jsp" %>
         
         <script>
             var contextPath = "${pageContext.request.contextPath}";
