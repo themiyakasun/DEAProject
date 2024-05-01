@@ -23,8 +23,9 @@ public class AddToCartServlet extends HttpServlet {
         String subTotalStr = request.getParameter("sub_total");
         
         int userId = getUserIdFromSession(request);
+        
         if (userId == -1) {
-            response.getWriter().write("Error: User ID not found in the session");
+            response.getWriter().write("User Not Authenticated");
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             return;
         }
@@ -74,7 +75,7 @@ public class AddToCartServlet extends HttpServlet {
                 return (Integer) userIdObj;
             }
         }
-        return -1; 
+        return -1;
     }
     
     private void updateQuantityInCart(int userId, int productId, int quantity) {

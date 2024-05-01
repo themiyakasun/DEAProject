@@ -29,8 +29,8 @@ function addToCart() {
     url: contextPath + '/AddToCartServlet',
     data: formData,
     success: function (response) {
-      $('#loadingIndicator').hide();
       alert(response);
+      $('#loadingIndicator').hide();
     },
   });
   return false;

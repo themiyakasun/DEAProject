@@ -35,8 +35,9 @@ public class CheckoutDetailsServlet extends HttpServlet {
         int orderId = parseInt(orderIdStr);
         
         int userId = getUserIdFromSession(request);
+        
         if (userId == -1) {
-            response.getWriter().write("Error: User ID not found in the session");
+            response.getWriter().write("User Not Authenticated");
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             return;
         }
@@ -123,7 +124,7 @@ public class CheckoutDetailsServlet extends HttpServlet {
                 return (Integer) userIdObj;
             }
         }
-        return -1; 
+        return -1;
     }
 
 

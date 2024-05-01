@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import myPackage.db.DbUtil;
 
 public class CartServlet extends HttpServlet {
@@ -19,6 +20,14 @@ public class CartServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        int userId = getUserIdFromSession(request);
+        
+        if (userId == -1) {
+            response.getWriter().write("User Not Authenticated");
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            return;
+        }
         
         ArrayList<CartItem> cartItems = getCartItemsFromDb();
         String json = new Gson().toJson(cartItems);
@@ -55,6 +64,17 @@ public class CartServlet extends HttpServlet {
             e.printStackTrace();
         }
         return cartItems;
+    }
+    
+    private int getUserIdFromSession(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            Object userIdObj = session.getAttribute("userId");
+            if (userIdObj instanceof Integer) {
+                return (Integer) userIdObj;
+            }
+        }
+        return -1;
     }
 
 
