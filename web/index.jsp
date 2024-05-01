@@ -33,7 +33,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3 mb-5">
-                    <a href="#" class="product-card">
+                    <a href="productDetails.jsp?proId=1" class="product-card">
                         <div class="product-box">
                             <img src="assets/images/products/plate01.png" class="product-img"/>
                             <h3>Excellent food</h3>
