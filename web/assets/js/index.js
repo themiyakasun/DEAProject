@@ -37,6 +37,7 @@ window.closeWishlistSidebar = function(){
 
 //Add To Cart
 function addToCart() {
+    event.preventDefault();
   var formData = $('#addToCartForm').serialize();
   $.ajax({
     type: 'POST',
@@ -44,10 +45,26 @@ function addToCart() {
     data: formData,
     success: function (response) {
       alert(response);
-      $('#loadingIndicator').hide();
+      location.reload();
     },
   });
   return false;
+}
+
+//Add To Wishlist 
+function addToWishlist(){
+    event.preventDefault();
+   var formData = $('#addToWishlistForm').serialize();
+   console.log(formData)
+   $.ajax({
+       url: 'AddToWishlistServlet',
+       type: 'POST',
+       data: formData,
+       success: function (response){
+            alert(response);
+            location.reload();
+       }
+   });
 }
 
 
@@ -677,6 +694,11 @@ $(document).ready(function(){
                                         '<input type="hidden" name="sub_total" value="' + product.proPrice + '" />' +
                                         '<button class="button" onclick="addToCart()">Add To Cart</button>' +
                                         '</form>'+
+                                        '<form id="addToWishlistForm" method="POST">' +
+                                        '<input type="hidden" name="pro_id" value="' + product.proId +'" />'+
+                                        '<input type="hidden" name="sub_total" value="' + product.proPrice + '" />' +
+                                        '<button class="wishlistBtn" onclick="addToWishlist()"><img src="assets/images/icons/heart.png" /></button>' +
+                                        '</form>'+
                                         '</div>' +
                                         '</a>' +
                                         '</div>';
@@ -712,6 +734,11 @@ $(document).ready(function(){
                                         '<input type="hidden" name="sub_total" value="' + product.proPrice + '" />' +
                                         '<button class="button" onclick="addToCart()">Add To Cart</button>' +
                                         '</form>'+
+                                        '<form id="addToWishlistForm" method="POST">' +
+                                        '<input type="hidden" name="pro_id" value="' + product.proId +'" />'+
+                                        '<input type="hidden" name="sub_total" value="' + product.proPrice + '" />' +
+                                        '<button class="wishlistBtn" onclick="addToWishlist()"><img src="assets/images/icons/heart.png" /></button>' +
+                                        '</form>'+
                                         '</div>' +
                                         '</a>' +
                                         '</div>';
@@ -742,6 +769,11 @@ $(document).ready(function(){
                                         '<input type="hidden" name="quantity" value="1" />' +
                                         '<input type="hidden" name="sub_total" value="' + product.proPrice + '" />' +
                                         '<button class="button" onclick="addToCart()">Add To Cart</button>' +
+                                        '</form>'+
+                                        '<form id="addToWishlistForm" method="POST">' +
+                                        '<input type="hidden" name="pro_id" value="' + product.proId +'" />'+
+                                        '<input type="hidden" name="sub_total" value="' + product.proPrice + '" />' +
+                                        '<button class="wishlistBtn" onclick="addToWishlist()"><img src="assets/images/icons/heart.png" /></button>' +
                                         '</form>'+
                                         '</div>' +
                                         '</a>' +
