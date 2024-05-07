@@ -21,6 +21,20 @@ window.toggleProfileDropdown = function(){
     profileDropdown.classList.toggle("active");
 };
 
+//Wishlist Sidebar
+window.openWishlistSidebar = function(){
+    var wishlistSidebar = document.getElementById("wishlist-sidebar");
+    var backDrop = document.getElementById("back-drop");
+    wishlistSidebar.classList.add('active');
+    backDrop.classList.add('active');
+};
+window.closeWishlistSidebar = function(){
+    var wishlistSidebar = document.getElementById("wishlist-sidebar");
+    var backDrop = document.getElementById("back-drop");
+    wishlistSidebar.classList.remove('active');
+    backDrop.classList.remove('active');
+};
+
 //Add To Cart
 function addToCart() {
   var formData = $('#addToCartForm').serialize();
