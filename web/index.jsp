@@ -19,6 +19,7 @@
     <body>
         <%@include file="includes/shared/navbar.jsp" %>
         <%@include file="includes/shared/search.jsp" %>
+        <%@include file="includes/shared/wishlistSidebar.jsp" %>
         
         <header class="main-header">
             <div class="container">
