@@ -34,7 +34,7 @@
             <div class="container">
                 <h1>Latest Products</h1>
                             
-                <div class='row'>
+                <div class='row' id="latestProducts">
                     <div class="col-md-4 product-card-wrapper">
                         <a href="productDetails.jsp?proId=1" class="product-card">
                             <div class="product-box">

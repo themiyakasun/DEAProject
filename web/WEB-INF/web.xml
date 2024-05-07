@@ -96,6 +96,10 @@
         <servlet-name>GetCartTotalServlet</servlet-name>
         <servlet-class>myPackage.cart.GetCartTotalServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GetLatestProductsServlet</servlet-name>
+        <servlet-class>myPackage.shop.GetLatestProductsServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>TestServlet</servlet-name>
         <url-pattern>/TestServlet</url-pattern>
@@ -191,6 +195,10 @@
     <servlet-mapping>
         <servlet-name>GetCartTotalServlet</servlet-name>
         <url-pattern>/GetCartTotalServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetLatestProductsServlet</servlet-name>
+        <url-pattern>/GetLatestProductsServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

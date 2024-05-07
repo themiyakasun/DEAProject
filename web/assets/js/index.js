@@ -640,6 +640,7 @@ $(document).ready(function(){
     });
 })
 
+//Get Products
 $(document).ready(function(){
     // Function to load all products when the page loads
     function loadAllProducts() {
@@ -648,7 +649,6 @@ $(document).ready(function(){
             url: contextPath + "/ProductByCatServlet",
             data: { category: 0 }, 
             success: function(products){
-                console.log(products)
                 $('#productContainer').empty();
                 products.forEach(function(product){
                     var productHTML = '<div class="col-md-4 product-card-wrapper">' +
@@ -706,6 +706,39 @@ $(document).ready(function(){
             }
         });
     });
+    
+    
+    //Get Latest Products
+    function fetchLatestProducts(){
+        $.ajax({
+            url: 'GetLatestProductsServlet',
+            type: 'GET',
+            dataType: 'json',
+            success: function(data){
+                $('#latestProducts').empty();
+                data.forEach(function(product){
+                    var productHTML = '<div class="col-md-4 product-card-wrapper">' +
+                                        '<a href="productDetails.jsp?proId='+ product.proId +'" class="product-card">' +
+                                        '<div class="product-box">' +
+                                        '<img src="assets/images/products/plate01.png" class="product-img"/>' +
+                                        '<h3>' + product.proName + '</h3>' +
+                                        '<p>Rs.' + product.proPrice + '</p>' +
+                                        '<form id="addToCartForm" method="POST">' +
+                                        '<input type="hidden" name="pro_id" value="' + product.proId +'" />'+
+                                        '<input type="hidden" name="quantity" value="1" />' +
+                                        '<input type="hidden" name="sub_total" value="' + product.proPrice + '" />' +
+                                        '<button class="button" onclick="addToCart()">Add To Cart</button>' +
+                                        '</form>'+
+                                        '</div>' +
+                                        '</a>' +
+                                        '</div>';
+                    $('#latestProducts').append(productHTML);
+                });
+            }
+        });
+    }
+    
+    fetchLatestProducts();
     
 });
  
