@@ -372,11 +372,23 @@ function updateCartWithShippingTotal(subTotal) {
         });
     }
     
+    function fetchCartTotal(){
+        $.ajax({
+            url: 'GetCartTotalServlet',
+            type: 'GET',
+            dataType: 'json',
+            success: function(data){
+                $('#cart-total').text(data);
+            }
+        });
+    }
+    
     fetchCartItemsAndUpdateTotal();
     fetchContactInformation();
     fetchAddressInformation();
     fetchOrderSummary();
     fetchOrderComplete();
+    fetchCartTotal();
  });
  
  
@@ -694,5 +706,8 @@ $(document).ready(function(){
             }
         });
     });
+    
 });
+ 
+ 
  
