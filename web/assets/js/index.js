@@ -403,6 +403,7 @@ function updateCartWithShippingTotal(subTotal) {
         });
     }
     
+    //Display CartTotal
     function fetchCartTotal(){
         $.ajax({
             url: 'GetCartTotalServlet',
@@ -414,12 +415,54 @@ function updateCartWithShippingTotal(subTotal) {
         });
     }
     
+    //Display Wishlist
+    function fetchWishlist(){
+        $.ajax({
+            url: 'WishlistServlet',
+            type: 'GET',
+            dataType: 'json',
+            success: function(products){
+                $('#wishlist-container').empty();       
+                products.forEach(function(product){
+                    console.log(product);
+                    var productHtml = '<a href="productDetails.jsp?proId='+ product.proId +'" style="width: 100%;">' +
+                            '<div class="wishlist-item">'+
+                            '<img src="assets/images/products/plate01.png"/>' +
+                            '<div class="wishlist-details">'+
+                            '<div class="details-top">'+
+                            '<h4 style="margin-bottom: 1rem!important;">'+ product.proName +'</h4>'+
+                            '<p>Rs.'+ product.price +'</p>'+
+                            '</div>'+
+                            '<div class="wishlist-actions">'+
+                            '<form id="addToCartForm" method="POST">' +
+                            '<input type="hidden" name="pro_id" value="' + product.proId +'" />'+
+                            '<input type="hidden" name="quantity" value="1" />' +
+                            '<input type="hidden" name="sub_total" value="' + product.price + '" />' +
+                            '<button class="add-to-cart" onclick="addToCart()">Add To Cart</button>' +
+                            '</form>'+
+                            '<form id="removeFromWishlistFrom" method="POST">'+
+                            '<input type="hidden" name="wishlist_id" value="' + product.wishlistId +'" />'+
+                            '<button><img src="assets/images/icons/close.png"/></button>'+
+                            '</form>'+
+                            '</div>'+
+                            '</div>'+
+                            '</div>'+
+                            '</a>' 
+                            
+                    $('#wishlist-container').append(productHtml);
+                })
+        
+            }
+        });
+    }
+    
     fetchCartItemsAndUpdateTotal();
     fetchContactInformation();
     fetchAddressInformation();
     fetchOrderSummary();
     fetchOrderComplete();
     fetchCartTotal();
+    fetchWishlist();
  });
  
  
