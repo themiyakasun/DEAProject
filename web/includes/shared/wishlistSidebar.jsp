@@ -7,8 +7,9 @@
             <button onclick="closeWishlistSidebar()"><img src="assets/images/icons/close.png" alt="closeBtn"/></button>
         </div>
         
-        <div class="wishlist-container">
-            <div class="wishlist-item">
+        <div class="wishlist-container" id="wishlist-container">
+            <a href="">
+                <div class="wishlist-item">
                 <img src="assets/images/products/plate01.png"/>
                 <div class="wishlist-details">
                     <div class="details-top">
@@ -20,7 +21,8 @@
                         <button><img src="assets/images/icons/close.png"/></button>
                     </div>
                 </div>
-            </div>
+                </div>
+            </a>
         </div>
     </div>
 </div>

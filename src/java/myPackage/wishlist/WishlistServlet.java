@@ -1,4 +1,4 @@
-package myPackage.cart;
+package myPackage.wishlist;
 
 import com.google.gson.Gson;
 import java.io.IOException;
@@ -13,9 +13,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import myPackage.cart.CartItem;
 import myPackage.db.DbUtil;
 
-public class CartServlet extends HttpServlet {
+public class WishlistServlet extends HttpServlet {
+
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -29,8 +31,8 @@ public class CartServlet extends HttpServlet {
             return;
         }
         
-        ArrayList<CartItem> cartItems = getCartItemsFromDb(userId);
-        String json = new Gson().toJson(cartItems);
+        ArrayList<WishlistItem> wishlistItems = getWishlistItemsFromDb(userId);
+        String json = new Gson().toJson(wishlistItems);
         
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
@@ -38,31 +40,29 @@ public class CartServlet extends HttpServlet {
         response.getWriter().write(json);
     }
     
-    private ArrayList<CartItem> getCartItemsFromDb(int userId) {
-        ArrayList<CartItem> cartItems = new ArrayList<>();
-        String query = "SELECT c.cart_id, c.pro_id, c.quantity, c.sub_total, p.pro_name, p.pro_img, p.pro_price " +
-                       "FROM cart c " +
-                       "INNER JOIN products p ON c.pro_id = p.pro_id " +
-                       "WHERE c.user_id = ?";
+    private ArrayList<WishlistItem> getWishlistItemsFromDb(int userId){
+        ArrayList<WishlistItem> wishlistItems = new ArrayList<>();
+        String query = "SELECT w.wishlist_id, w.pro_id, w.price, p.pro_name, p.pro_img, p.pro_price " +
+                       "FROM wishlist w " +
+                       "INNER JOIN products p ON w.pro_id = p.pro_id " +
+                       "WHERE w.user_id = ?";
         try (Connection conn = DbUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setInt(1, userId);
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
-                    int cartId = rs.getInt("cart_id");
+                    int wishlistId = rs.getInt("wishlist_id");
                     int productId = rs.getInt("pro_id");
-                    int quantity = rs.getInt("quantity");
-                    double subTotal = rs.getDouble("sub_total");
+                    double price = rs.getDouble("price");
                     String productName = rs.getString("pro_name");
                     String productImage = rs.getString("pro_img");
-                    double price = rs.getDouble("pro_price");
-                    cartItems.add(new CartItem(cartId, productId, productName, productImage, quantity, price, subTotal));
+                    wishlistItems.add(new WishlistItem(wishlistId, productId, productName, productImage, price));
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return cartItems;
+        return wishlistItems;
     }
     
     private int getUserIdFromSession(HttpServletRequest request) {
