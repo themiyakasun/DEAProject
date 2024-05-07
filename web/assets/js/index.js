@@ -67,6 +67,24 @@ function addToWishlist(){
    });
 }
 
+//Remove From Wishlist
+function deleteWishlist(wishlistId){
+    $.ajax({
+        url: 'DeleteWishlistServlet',
+        type: 'POST',
+        data: {wishlistId: wishlistId},
+        success: function(response){
+            alert(response);
+            location.reload();
+            
+        },
+        error: function(){
+            alert("Error Deleting item");
+        }
+    })
+}
+
+
 
 //Get Shipping Value
 window.getShipping = function(){
@@ -440,10 +458,7 @@ function updateCartWithShippingTotal(subTotal) {
                             '<input type="hidden" name="sub_total" value="' + product.price + '" />' +
                             '<button class="add-to-cart" onclick="addToCart()">Add To Cart</button>' +
                             '</form>'+
-                            '<form id="removeFromWishlistFrom" method="POST">'+
-                            '<input type="hidden" name="wishlist_id" value="' + product.wishlistId +'" />'+
-                            '<button><img src="assets/images/icons/close.png"/></button>'+
-                            '</form>'+
+                            '<button onclick="deleteWishlist(' + product.wishlistId +')"><img src="assets/images/icons/close.png"/></button>'+
                             '</div>'+
                             '</div>'+
                             '</div>'+
