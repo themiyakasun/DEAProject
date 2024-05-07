@@ -92,6 +92,10 @@
         <servlet-name>ProductByCatServlet</servlet-name>
         <servlet-class>myPackage.shop.ProductByCatServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GetCartTotalServlet</servlet-name>
+        <servlet-class>myPackage.cart.GetCartTotalServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>TestServlet</servlet-name>
         <url-pattern>/TestServlet</url-pattern>
@@ -183,6 +187,10 @@
     <servlet-mapping>
         <servlet-name>ProductByCatServlet</servlet-name>
         <url-pattern>/ProductByCatServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetCartTotalServlet</servlet-name>
+        <url-pattern>/GetCartTotalServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
