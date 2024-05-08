@@ -64,6 +64,9 @@
                         }
                     %>
                 </a>
+                <button class="cart-button" id="wishlist-btn" onclick="openWishlistSidebar()">
+                    <img src="assets/images/icons/heart.png" />
+                </button>
             </div>
         </div>
     </div>

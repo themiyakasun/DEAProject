@@ -21,8 +21,23 @@ window.toggleProfileDropdown = function(){
     profileDropdown.classList.toggle("active");
 };
 
+//Wishlist Sidebar
+window.openWishlistSidebar = function(){
+    var wishlistSidebar = document.getElementById("wishlist-sidebar");
+    var backDrop = document.getElementById("back-drop");
+    wishlistSidebar.classList.add('active');
+    backDrop.classList.add('active');
+};
+window.closeWishlistSidebar = function(){
+    var wishlistSidebar = document.getElementById("wishlist-sidebar");
+    var backDrop = document.getElementById("back-drop");
+    wishlistSidebar.classList.remove('active');
+    backDrop.classList.remove('active');
+};
+
 //Add To Cart
 function addToCart() {
+    event.preventDefault();
   var formData = $('#addToCartForm').serialize();
   $.ajax({
     type: 'POST',
@@ -30,11 +45,45 @@ function addToCart() {
     data: formData,
     success: function (response) {
       alert(response);
-      $('#loadingIndicator').hide();
+      location.reload();
     },
   });
   return false;
 }
+
+//Add To Wishlist 
+function addToWishlist(){
+    event.preventDefault();
+   var formData = $('#addToWishlistForm').serialize();
+   console.log(formData)
+   $.ajax({
+       url: 'AddToWishlistServlet',
+       type: 'POST',
+       data: formData,
+       success: function (response){
+            alert(response);
+            location.reload();
+       }
+   });
+}
+
+//Remove From Wishlist
+function deleteWishlist(wishlistId){
+    $.ajax({
+        url: 'DeleteWishlistServlet',
+        type: 'POST',
+        data: {wishlistId: wishlistId},
+        success: function(response){
+            alert(response);
+            location.reload();
+            
+        },
+        error: function(){
+            alert("Error Deleting item");
+        }
+    })
+}
+
 
 
 //Get Shipping Value
@@ -372,6 +421,7 @@ function updateCartWithShippingTotal(subTotal) {
         });
     }
     
+    //Display CartTotal
     function fetchCartTotal(){
         $.ajax({
             url: 'GetCartTotalServlet',
@@ -383,12 +433,51 @@ function updateCartWithShippingTotal(subTotal) {
         });
     }
     
+    //Display Wishlist
+    function fetchWishlist(){
+        $.ajax({
+            url: 'WishlistServlet',
+            type: 'GET',
+            dataType: 'json',
+            success: function(products){
+                $('#wishlist-container').empty();       
+                products.forEach(function(product){
+                    console.log(product);
+                    var productHtml = '<a href="productDetails.jsp?proId='+ product.proId +'" style="width: 100%;">' +
+                            '<div class="wishlist-item">'+
+                            '<img src="assets/images/products/plate01.png"/>' +
+                            '<div class="wishlist-details">'+
+                            '<div class="details-top">'+
+                            '<h4 style="margin-bottom: 1rem!important;">'+ product.proName +'</h4>'+
+                            '<p>Rs.'+ product.price +'</p>'+
+                            '</div>'+
+                            '<div class="wishlist-actions">'+
+                            '<form id="addToCartForm" method="POST">' +
+                            '<input type="hidden" name="pro_id" value="' + product.proId +'" />'+
+                            '<input type="hidden" name="quantity" value="1" />' +
+                            '<input type="hidden" name="sub_total" value="' + product.price + '" />' +
+                            '<button class="add-to-cart" onclick="addToCart()">Add To Cart</button>' +
+                            '</form>'+
+                            '<button onclick="deleteWishlist(' + product.wishlistId +')"><img src="assets/images/icons/close.png"/></button>'+
+                            '</div>'+
+                            '</div>'+
+                            '</div>'+
+                            '</a>' 
+                            
+                    $('#wishlist-container').append(productHtml);
+                })
+        
+            }
+        });
+    }
+    
     fetchCartItemsAndUpdateTotal();
     fetchContactInformation();
     fetchAddressInformation();
     fetchOrderSummary();
     fetchOrderComplete();
     fetchCartTotal();
+    fetchWishlist();
  });
  
  
@@ -663,6 +752,11 @@ $(document).ready(function(){
                                         '<input type="hidden" name="sub_total" value="' + product.proPrice + '" />' +
                                         '<button class="button" onclick="addToCart()">Add To Cart</button>' +
                                         '</form>'+
+                                        '<form id="addToWishlistForm" method="POST">' +
+                                        '<input type="hidden" name="pro_id" value="' + product.proId +'" />'+
+                                        '<input type="hidden" name="sub_total" value="' + product.proPrice + '" />' +
+                                        '<button class="wishlistBtn" onclick="addToWishlist()"><img src="assets/images/icons/heart.png" /></button>' +
+                                        '</form>'+
                                         '</div>' +
                                         '</a>' +
                                         '</div>';
@@ -698,6 +792,11 @@ $(document).ready(function(){
                                         '<input type="hidden" name="sub_total" value="' + product.proPrice + '" />' +
                                         '<button class="button" onclick="addToCart()">Add To Cart</button>' +
                                         '</form>'+
+                                        '<form id="addToWishlistForm" method="POST">' +
+                                        '<input type="hidden" name="pro_id" value="' + product.proId +'" />'+
+                                        '<input type="hidden" name="sub_total" value="' + product.proPrice + '" />' +
+                                        '<button class="wishlistBtn" onclick="addToWishlist()"><img src="assets/images/icons/heart.png" /></button>' +
+                                        '</form>'+
                                         '</div>' +
                                         '</a>' +
                                         '</div>';
@@ -728,6 +827,11 @@ $(document).ready(function(){
                                         '<input type="hidden" name="quantity" value="1" />' +
                                         '<input type="hidden" name="sub_total" value="' + product.proPrice + '" />' +
                                         '<button class="button" onclick="addToCart()">Add To Cart</button>' +
+                                        '</form>'+
+                                        '<form id="addToWishlistForm" method="POST">' +
+                                        '<input type="hidden" name="pro_id" value="' + product.proId +'" />'+
+                                        '<input type="hidden" name="sub_total" value="' + product.proPrice + '" />' +
+                                        '<button class="wishlistBtn" onclick="addToWishlist()"><img src="assets/images/icons/heart.png" /></button>' +
                                         '</form>'+
                                         '</div>' +
                                         '</a>' +
