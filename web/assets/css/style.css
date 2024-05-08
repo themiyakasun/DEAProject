@@ -168,7 +168,8 @@ input[type='radio']:checked:after {
     color: #6C7275;
 }
 .input-box input,
-.input-box select {
+.input-box select,
+.input-box textarea {
     display: flex;
     height: 40px;
     padding: 0px 16px;
@@ -178,6 +179,9 @@ input[type='radio']:checked:after {
     border-radius: 6px;
     border: 1px solid #CBCBCB;
     background: #FFF;
+}
+.input-box textarea {
+    height: 140px;
 }
 .input-box select {
     color: #6C7275;
@@ -1353,4 +1357,21 @@ footer {
 .category-card img {
     width: 100%;
     height: 300px;
+}
+
+/* Contact us */
+.contact-section {
+    padding: 80px 0;
+}
+.contact-header {
+    font-family: Poppins;
+    font-size: 54px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 58px;
+    letter-spacing: -1px;
+    width: 834px;
+}
+.contact-form {
+    margin-top: 80px;
 }

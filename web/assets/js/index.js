@@ -744,3 +744,19 @@ $(document).ready(function(){
  
  
  
+ 
+ //Send Message
+ function sendMessage(){
+    event.preventDefault();
+    var formData = $('#contactForm').serialize();
+    
+    $.ajax({
+        url: "SendMessageServlet",
+        type: "POST",
+        data: formData,
+        success: function(response){
+            alert(response);
+            
+        }
+    });
+ }
