@@ -36,7 +36,7 @@
                               Integer userId = (Integer) session.getAttribute("userId");
                               if (userId != null) {
                             %>
-                                <li><a href="#">Profile</a></li>
+                                <li><a href="profile.jsp">Profile</a></li>
                                 <li><a onClick="signOut()">Log Out</a></li>
                             <%
                               } else {
