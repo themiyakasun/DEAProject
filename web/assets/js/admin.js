@@ -320,3 +320,17 @@ function signOut() {
   });
 }
 
+$(document).ready(function() {
+    function getTotalProducts(){
+     $.ajax({
+         type: 'GET',
+         url: contextPath + '/TotalProductsServlet',
+         success: function(products){
+             $('#totalProducts').text(products.totalProducts);
+             $('#totalCategories').text(products.totalCategories);
+         }
+     });
+      } 
+      
+      getTotalProducts();
+  })
