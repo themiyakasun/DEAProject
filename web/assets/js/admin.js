@@ -319,3 +319,18 @@ function signOut() {
     },
   });
 }
+
+$(document).ready(function() {
+    function getTotalProducts(){
+     $.ajax({
+         type: 'GET',
+         url: contextPath + '/GetTotalsServlet',
+         success: function(products){
+             $('#totalProducts').text(products.totalProducts);
+             $('#totalCategories').text(products.totalCategories);
+         }
+     });
+      } 
+      
+      getTotalProducts();
+  })

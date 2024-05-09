@@ -116,6 +116,10 @@
         <servlet-name>SendMessageServlet</servlet-name>
         <servlet-class>myPackage.contact.SendMessageServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GetTotalsServlet</servlet-name>
+        <servlet-class>myPackage.admin.GetTotalsServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>TestServlet</servlet-name>
         <url-pattern>/TestServlet</url-pattern>
@@ -231,6 +235,10 @@
     <servlet-mapping>
         <servlet-name>SendMessageServlet</servlet-name>
         <url-pattern>/SendMessageServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetTotalsServlet</servlet-name>
+        <url-pattern>/GetTotalsServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
