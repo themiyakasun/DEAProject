@@ -864,3 +864,34 @@ $(document).ready(function(){
         }
     });
  }
+
+
+
+  //Profile
+ 
+ //getUserData
+$(document).ready(function(){
+    function fetchContactInformation() {
+       $.ajax({
+         url: 'ContactInformationServlet',
+         type: 'GET',
+         dataType: 'json',
+         success: function (data) {
+           if (data.length > 0) {
+             var contactInfo = data[0];
+
+             $('#profile-fname').val(contactInfo.firstName);
+             $('#profile-lname').val(contactInfo.lastName);
+             $('#profile-email').val(contactInfo.email);
+             $('#profile-phone').val(contactInfo.phoneNo);
+           }
+         },
+         error: function () {
+//            alert('Error fetching contact information.');
+         }
+       });
+    }
+    
+    
+    fetchContactInformation();
+ });
