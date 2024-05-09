@@ -328,6 +328,8 @@ $(document).ready(function() {
          success: function(products){
              $('#totalProducts').text(products.totalProducts);
              $('#totalCategories').text(products.totalCategories);
+             $('#totalOrders').text(products.totalOrders);
+             $('#totalUsers').text(products.totalUsers);
          }
      });
       } 

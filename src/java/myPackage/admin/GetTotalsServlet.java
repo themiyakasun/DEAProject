@@ -1,11 +1,17 @@
 package myPackage.admin;
 
+import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import myPackage.db.DbUtil;
 
 public class GetTotalsServlet extends HttpServlet {
 
@@ -84,6 +90,25 @@ public class GetTotalsServlet extends HttpServlet {
     private int getTotalUsers(){
         try(Connection conn = DbUtil.getConnection()){
             String query = "SELECT COUNT(*) FROM users";
+            
+            try(PreparedStatement statement = conn.prepareStatement(query)){
+               
+                try(ResultSet result = statement.executeQuery()){
+                    if(result.next()){
+                        int count = result.getInt(1);
+                        return count;
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.getMessage();
+        }
+         return -1;
+    }
+    
+    private int getTotalOrders(){
+        try(Connection conn = DbUtil.getConnection()){
+            String query = "SELECT COUNT(*) FROM orders";
             
             try(PreparedStatement statement = conn.prepareStatement(query)){
                
