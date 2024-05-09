@@ -8,21 +8,6 @@
         </div>
         
         <div class="wishlist-container" id="wishlist-container">
-            <a href="">
-                <div class="wishlist-item">
-                <img src="assets/images/products/plate01.png"/>
-                <div class="wishlist-details">
-                    <div class="details-top">
-                        <h4>Product 1</h4>
-                        <p>$99</p>
-                    </div>
-                    <div class="wishlist-actions">
-                        <button class="add-to-cart">Add To Cart</button>
-                        <button><img src="assets/images/icons/close.png"/></button>
-                    </div>
-                </div>
-                </div>
-            </a>
         </div>
     </div>
 </div>
