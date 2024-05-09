@@ -81,5 +81,24 @@ public class GetTotalsServlet extends HttpServlet {
          return -1;
     }
 
+    private int getTotalUsers(){
+        try(Connection conn = DbUtil.getConnection()){
+            String query = "SELECT COUNT(*) FROM users";
+            
+            try(PreparedStatement statement = conn.prepareStatement(query)){
+               
+                try(ResultSet result = statement.executeQuery()){
+                    if(result.next()){
+                        int count = result.getInt(1);
+                        return count;
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.getMessage();
+        }
+         return -1;
+    }
+
 
 }
