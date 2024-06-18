@@ -45,4 +45,7 @@ public class products {
     public void setProImg(String proImg){
         this.proImg = proImg;
     }
+    public String getProDesc(){
+        return proDesc;
+    }
 }
