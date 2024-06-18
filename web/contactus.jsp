@@ -41,6 +41,10 @@
                                 <label>Subject</label>
                                 <input type="text" placeholder="Subject" name="subject" id="subject"/>
                             </div>
+                            <div class="input-box mt-3">
+                                <label>Message</label>
+                                <textarea placeholder="Message" name="message" id="message"></textarea>
+                            </div>
             </div>
             
 
