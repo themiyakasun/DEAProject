@@ -21,6 +21,34 @@ public class AddProductServlettest extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-      
+        String proName = request.getParameter("pro_name");
+        String proDesc = request.getParameter("pro_desc");
+        int proCat = Integer.parseInt(request.getParameter("pro_cat"));
+        double proPrice = Double.parseDouble(request.getParameter("pro_price"));
+        String imgName = null;
+        
+        Part filePart = request.getPart("pro_img");
+        if (filePart != null) {
+            imgName = generateUniqueFileName(filePart);
+            saveFile(filePart, imgName, request);
+        }
+
+        insertProduct(proName, proDesc, proPrice, proCat, imgName);
+        response.getWriter().println("Product added successfully");
+
     }
-}
+    private void insertProduct(String proName, String proDesc, double proPrice, int proCat, String imgName){
+        try (Connection conn = DbUtil.getConnection();
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO products (cat_id, pro_name, pro_price, pro_img, pro_desc, reviews, date) VALUES (?, ?, ?, ?, ?, ?, ?)")) {
+            stmt.setInt(1, proCat);
+            stmt.setString(2, proName);
+            stmt.setDouble(3, proPrice);
+            stmt.setString(4, imgName);
+            stmt.setString(5, proDesc);
+            stmt.setInt(6, 0);
+            stmt.setTimestamp(7, new java.sql.Timestamp(System.currentTimeMillis()));
+            stmt.executeUpdate();
+        }catch (SQLException e){
+            e.getMessage();
+        }
+    }
