@@ -19,7 +19,7 @@
     <body>
         <div class="row">
             <div class="col-md-2">
-                <%@include file="../includes/admin/sidebar.jsp" %>
+                <%@include file=".../includes/admin/sidebar.jsp" %>
             </div>
             <div class="col-md-10 p-3">
                 <%@include file="../includes/admin/nav.jsp" %>
