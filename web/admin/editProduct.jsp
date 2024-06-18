@@ -28,7 +28,7 @@
 
                 $.ajax({
                     url: '${pageContext.request.contextPath}/GetProductServlet',
-                    type: 'GET',
+                    type: 'POST',
                     data: { proId: proId },
                     dataType: 'json',
                     success: function(product) {
