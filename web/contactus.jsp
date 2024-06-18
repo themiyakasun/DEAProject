@@ -21,38 +21,7 @@
         <%@include file="includes/shared/search.jsp" %>
         
         <section class="contact-section">
-            <div class="container">
-                <!-- Heading -->
-                <h1 class="contact-header">
-                    We believe in better than just serving delicious food, We believe in creating experiences that resonate with the soul
-                </h1>
-                
-                <form class="contact-form" id="contactForm" method="POST">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="input-box">
-                                <label>Full Name</label>
-                                <input type="text" placeholder="Full Name" name="name" id="fname"/>
-                            </div>
-                            <div class="input-box mt-3">
-                                <label>Email Address</label>
-                                <input type="email" placeholder="Email Address" name="email" id="email"/>
-                            </div>
-                            <div class="input-box mt-3">
-                                <label>Subject</label>
-                                <input type="text" placeholder="Subject" name="subject" id="subject"/>
-                            </div>
-                            <div class="input-box mt-3">
-                                <label>Message</label>
-                                <textarea placeholder="Message" name="message" id="message"></textarea>
-                            </div>
-                            <button class="button mt-3" onclick="sendMessage()">Send Message</button>
-                        </div>
-                        <div class="col-md-6"></div>
-                    </div>
-                </form>
-                
-            </div>
+           
             
 
         </section>
