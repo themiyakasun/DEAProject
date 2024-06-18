@@ -34,7 +34,7 @@
                     success: function(product) {
                         console.log(product);
                         var catId = product[0].catId;
-                        var catName = product[0].catName;
+                        var catName = product[1].catName;
                         var proName = product[0].proName;
                         var proPrice = product[0].proPrice;
                         var proImg = product[0].proImg;
