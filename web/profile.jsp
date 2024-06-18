@@ -17,7 +17,7 @@
     </head>
     <body>
         
-        
+        <%@include file="includes/shared/navbar.jsp" %>
 
         <%@include file="includes/shared/wishlistSidebar.jsp" %>
         
