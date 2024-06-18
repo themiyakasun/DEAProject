@@ -32,5 +32,10 @@ public class products {
     public void setCatId(int catId){
         this.catId = catId;
     }
-    
+    public double getProPrice(){
+        return proPrice;
+    }
+    public void setProPrice(double proPrice){
+        this.proPrice = proPrice;
+    }
 }
