@@ -61,5 +61,15 @@ public class AddProductServlettest extends HttpServlet {
         return null;
         
     }
-    
+    private String generateUniqueFileName(Part filePart) {
+        String fileName = getFileName(filePart);
+        String[] tokens = fileName.split("\\.");
+        String extension = tokens[tokens.length - 1];
+        String uniqueName = System.currentTimeMillis() + "_" + (int)(Math.random() * 1000) + "." + extension;
+        return uniqueName;
+    }
+
+    private void saveFile(Part filePart, String fileName, HttpServletRequest request) throws IOException {
+       
+    }
 }
