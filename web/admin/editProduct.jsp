@@ -45,7 +45,7 @@
                         $('#pro_id').val(proId);
                         $('#pro_name').val(proName);
                         $('#pro_price').val(proPrice);
-                        $('#proimg').attr('src', imageUrl);
+                        $('#pro_img').attr('src', imageUrl);
                         $('#pro_desc').val(proDesc);
                         $('#img_input').val(proImg);
                         $('#cat').val(catId);
