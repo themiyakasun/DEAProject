@@ -33,6 +33,10 @@
                                 <label>Full Name</label>
                                 <input type="text" placeholder="Full Name" name="name" id="fname"/>
                             </div>
+                            <div class="input-box mt-3">
+                                <label>Email Address</label>
+                                <input type="email" placeholder="Email Address" name="email" id="email"/>
+                            </div>
             </div>
             
 
