@@ -45,6 +45,7 @@
                                 <label>Message</label>
                                 <textarea placeholder="Message" name="message" id="message"></textarea>
                             </div>
+                            <button class="button mt-3" onclick="sendMessage()">Send Message</button>
             </div>
             
 
