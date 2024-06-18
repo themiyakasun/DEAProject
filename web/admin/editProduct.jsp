@@ -70,6 +70,8 @@
                     <%@include file="../includes/admin/editProductSection.jsp" %>
                 </div>
             </div>
+        </div>
+        
     </body>
 </html>
 
