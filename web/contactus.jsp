@@ -37,6 +37,10 @@
                                 <label>Email Address</label>
                                 <input type="email" placeholder="Email Address" name="email" id="email"/>
                             </div>
+                            <div class="input-box mt-3">
+                                <label>Subject</label>
+                                <input type="text" placeholder="Subject" name="subject" id="subject"/>
+                            </div>
             </div>
             
 
