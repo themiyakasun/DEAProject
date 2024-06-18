@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import myPackage.db.DbUtil;
 
 public class getpro {
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -29,5 +29,9 @@ public class getpro {
         response.setCharacterEncoding("UTF-8");
         
         response.getWriter().write(json);
+    }
+
+    private ArrayList<ProductItem> getProductFromDb(int proId){
+       
     }
 }
