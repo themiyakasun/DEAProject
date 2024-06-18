@@ -38,4 +38,7 @@ public class products {
     public void setProPrice(double proPrice){
         this.proPrice = proPrice;
     }
+    public String getProImg(){
+        return proImg;
+    }
 }
