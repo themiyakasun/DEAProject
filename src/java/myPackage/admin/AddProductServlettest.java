@@ -73,6 +73,15 @@ public class AddProductServlettest extends HttpServlet {
         if (fileName != null && !fileName.isEmpty()) {
             String uploadDir = request.getServletContext().getRealPath("/") + "uploads";
             String filePath = uploadDir + File.separator + fileName;
+
+            File uploadDirFile = new File(uploadDir);
+            if (!uploadDirFile.exists()) {
+                boolean created = uploadDirFile.mkdirs();
+                if (!created) {
+                    System.err.println("Failed to create directory: " + uploadDir);
+                    return;
+                }
+            }
         }
     }
 }
