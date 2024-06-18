@@ -40,12 +40,12 @@
                         var proImg = product[0].proImg;
                         var proDesc = product[0].proDesc;
 
-                        var imageUrl = '${pageContext.request.contextPath}/uploads/' + proImg;
+                        var imageUrl = '${pageContext.request.contextPath}/upload/' + proImg;
 
                         $('#pro_id').val(proId);
                         $('#pro_name').val(proName);
                         $('#pro_price').val(proPrice);
-                        $('#pro_img').attr('src', imageUrl);
+                        $('#proimg').attr('src', imageUrl);
                         $('#pro_desc').val(proDesc);
                         $('#img_input').val(proImg);
                         $('#cat').val(catId);
