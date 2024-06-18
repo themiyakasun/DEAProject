@@ -17,5 +17,10 @@ import javax.servlet.http.Part;
 import myPackage.db.DbUtil;
 
 public class AddProductServlettest extends HttpServlet {
-
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+      
+    }
 }
