@@ -85,6 +85,10 @@ public class AddProductServlettest extends HttpServlet {
             try (InputStream inputStream = filePart.getInputStream()) {
                 Files.copy(inputStream, Paths.get(filePath));
                 System.out.println("File saved successfully: " + filePath);
+            } catch (IOException e) {
+                System.err.println("Error saving file: " + e.getMessage());
+                throw e;
+            }
            
         }
     }
