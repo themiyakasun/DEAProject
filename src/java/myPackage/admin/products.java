@@ -20,4 +20,7 @@ public class products {
         this.proReviews = proReviews;
         this.date = date;
     }
+    public int getProId(){
+        return proId;
+    }
 }
