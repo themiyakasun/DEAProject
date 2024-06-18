@@ -70,6 +70,8 @@ public class AddProductServlettest extends HttpServlet {
     }
 
     private void saveFile(Part filePart, String fileName, HttpServletRequest request) throws IOException {
-       
+        if (fileName != null && !fileName.isEmpty()) {
+            
+        }
     }
 }
