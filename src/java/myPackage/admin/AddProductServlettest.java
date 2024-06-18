@@ -72,6 +72,7 @@ public class AddProductServlettest extends HttpServlet {
     private void saveFile(Part filePart, String fileName, HttpServletRequest request) throws IOException {
         if (fileName != null && !fileName.isEmpty()) {
             String uploadDir = request.getServletContext().getRealPath("/") + "uploads";
+            String filePath = uploadDir + File.separator + fileName;
         }
     }
 }
