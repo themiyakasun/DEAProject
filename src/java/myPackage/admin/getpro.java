@@ -32,6 +32,14 @@ public class getpro {
     }
 
     private ArrayList<ProductItem> getProductFromDb(int proId){
-       
+        ArrayList<ProductItem> product = new ArrayList<>();
+        
+        try(Connection conn = DbUtil.getConnection()){
+          
+        }catch (SQLException e){
+            e.getMessage();
+        }
+        
+        return product;
     }
 }
