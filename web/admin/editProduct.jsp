@@ -59,7 +59,10 @@
         </script>
     </head>
     <body>
-        
+        <div class="row">
+            <div class="col-md-2">
+                <%@include file="../includes/admin/sidebar.jsp" %>
+            </div>
     </body>
 </html>
 
