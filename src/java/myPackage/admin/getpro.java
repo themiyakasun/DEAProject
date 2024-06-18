@@ -35,6 +35,9 @@ public class getpro {
         ArrayList<ProductItem> product = new ArrayList<>();
         
         try(Connection conn = DbUtil.getConnection()){
+            String query = "SELECT p.*, c.category FROM products p JOIN categories c ON p.cat_id = c.cat_id WHERE p.pro_id = ?";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setInt(1, proId);
           
         }catch (SQLException e){
             e.getMessage();
