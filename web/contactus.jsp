@@ -46,6 +46,10 @@
                                 <textarea placeholder="Message" name="message" id="message"></textarea>
                             </div>
                             <button class="button mt-3" onclick="sendMessage()">Send Message</button>
+                            <div class="col-md-6"></div>
+                    </div>
+                </form>
+                
             </div>
             
 
