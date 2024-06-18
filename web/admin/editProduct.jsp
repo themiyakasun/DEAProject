@@ -52,7 +52,7 @@
                         $('#cat').text(catName);
                     },
                     error: function() {
-                        alert('Error fetching product data.');
+                        alert('Unable to retrieve product information.');
                     }
                 });
             });
