@@ -48,4 +48,23 @@ public class products {
     public String getProDesc(){
         return proDesc;
     }
+    public void setProDesc(String proDesc){
+        this.proDesc = proDesc;
+    }
+    
+    public double getProReviews(){
+        return proReviews;
+    }
+    
+    public void setProReviews(double proReviews){
+        this.proReviews = proReviews;
+    }
+    
+    public String getDate(){
+        return date;
+    }
+    
+    public void setDate(String date){
+        this.date = date;
+    }
 }
