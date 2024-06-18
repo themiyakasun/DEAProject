@@ -23,4 +23,10 @@ public class products {
     public int getProId(){
         return proId;
     }
+    public void setProId(int proId){
+        this.proId = proId;
+    }
+    public int getCatId(){
+        return catId;
+    }
 }
