@@ -26,7 +26,7 @@
                 <h1 class="contact-header">
                     We believe in better than just serving delicious food, We believe in creating experiences that resonate with the soul
                 </h1>
-                
+                <form class="contact-form" id="contactForm" method="POST">
             </div>
             
 
