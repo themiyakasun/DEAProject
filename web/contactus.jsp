@@ -27,6 +27,12 @@
                     We believe in better than just serving delicious food, We believe in creating experiences that resonate with the soul
                 </h1>
                 <form class="contact-form" id="contactForm" method="POST">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-box">
+                                <label>Full Name</label>
+                                <input type="text" placeholder="Full Name" name="name" id="fname"/>
+                            </div>
             </div>
             
 
