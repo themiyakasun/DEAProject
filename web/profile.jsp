@@ -17,7 +17,8 @@
     </head>
     <body>
         
-        <%@include file="includes/shared/search.jsp" %>
+        <%@include file="includes/shared/navbar.jsp" %>
+        
         <%@include file="includes/shared/wishlistSidebar.jsp" %>
         
         <%@include file="includes/profile/profileHeader.jsp" %>
