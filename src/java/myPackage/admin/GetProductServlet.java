@@ -47,7 +47,7 @@ public class GetProductServlet extends HttpServlet {
                     String catName = rs.getString("category");
                     String proName = rs.getString("pro_name");
                     double proPrice = rs.getDouble("pro_price");
-                    String proImg = rs.getString("pro_img");
+                    String proImg = rs.getString("proimg");
                     String proDesc = rs.getString("pro_desc");
                     double reviews = rs.getDouble("reviews");
                     String date = rs.getString("date");

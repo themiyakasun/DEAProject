@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import myPackage.db.DbUtil;
 
 public class getpro {
-  //  connection to the database
+  
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
